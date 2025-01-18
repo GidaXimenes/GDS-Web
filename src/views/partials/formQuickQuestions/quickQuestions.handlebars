@@ -1,0 +1,120 @@
+<div>
+    {{!-- Qual o formato da aplicação? --}}
+    <div>
+        <label>Qual o formato da aplicação?</label>
+        <div>
+            <input type="radio" id="presencial" name="formatoAplicacao" value="Presencial">
+            <label for="presencial">Presencial</label>
+        </div>
+        <div>
+            <input type="radio" id="online" name="formatoAplicacao" value="Online">
+            <label for="online">Online</label>
+        </div>
+        <div>
+            <input type="radio" id="hibrido" name="formatoAplicacao" value="Híbrido">
+            <label for="hibrido">Híbrido (presencial e online)</label>
+        </div>
+    </div>
+
+    {{!-- Quantas aulas estão previstas para esta gamificação? --}}
+    <div>
+        <label>Quantas aulas estão previstas para esta gamificação?</label>
+        <input type="number" name="quantidadeAulas" min="1" required>
+    </div>
+
+    {{!-- Descreva o tema ou assunto --}}
+    <div>
+        <label>Em poucas palavras, descreva o tema ou assunto que você deseja gamificar.</label>
+        <textarea name="temaGamificacao" rows="3" required></textarea>
+    </div>
+
+    {{!-- De que forma os participantes interagirão na gamificação? --}}
+    <div>
+        <label>De que forma os participantes interagirão na gamificação?</label>
+        <div>
+            <input type="radio" id="individual" name="interacao" value="Individualmente">
+            <label for="individual">Individualmente</label>
+        </div>
+        <div>
+            <input type="radio" id="grupos" name="interacao" value="Em grupos">
+            <label for="grupos">Em grupos ou equipes</label>
+        </div>
+        <div>
+            <input type="radio" id="misto" name="interacao" value="Misto">
+            <label for="misto">Mistura de individual e coletivo</label>
+        </div>
+    </div>
+
+    {{!-- Qual será o principal tipo de interação? --}}
+    <div>
+        <label>Qual será o principal tipo de interação entre os participantes?</label>
+        <div>
+            <input type="radio" id="competicao" name="tipoInteracao" value="Competição">
+            <label for="competicao">Competição</label>
+        </div>
+        <div>
+            <input type="radio" id="cooperacao" name="tipoInteracao" value="Cooperação">
+            <label for="cooperacao">Cooperação</label>
+        </div>
+        <div>
+            <input type="radio" id="ambas" name="tipoInteracao" value="Ambas">
+            <label for="ambas">Ambas (competição e cooperação)</label>
+        </div>
+    </div>
+
+    {{!-- Quais temas ou gêneros narrativos você gostaria de incorporar na gamificação? --}}
+    <div>
+        <label>Quais temas ou gêneros narrativos você gostaria de incorporar na gamificação? Aqui vão alguns exemplos:</label>
+        <div>
+            <input type="checkbox" name="temasGenerosNarrativos" value="AventuraEspacial"> Aventura espacial<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="ViagemNoTempo"> Viagem no tempo<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="Misterio"> Mistério / Investigação / Suspense<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="Sobrevivencia"> Sobrevivência e exploração<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="MitologiaFantasia"> Mitologia / Fantasia<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="VelhoOeste"> Velho Oeste<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="Sustentabilidade"> Sustentabilidade e Proteção da Natureza<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="UtopiaDistopia"> Mundo Utópico ou Distópico<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="Piratas"> Piratas<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="TempoMedieval"> Tempo Medieval<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="CenariosTrabalho"> Cenários de Trabalho<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="Terror"> Terror<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="Drama"> Drama<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="Comedia"> Comédia<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="FiccaoCientifica"> Ficção Científica<br>
+            <input type="checkbox" name="temasGenerosNarrativos" value="Outro"> Outro: <input type="text" name="temasGenerosNarrativosOutro">
+        </div>
+    </div>
+
+    {{!-- Tipo de avaliação nesta missão --}}
+    <div>
+        <label>Qual será o tipo de avaliação nesta missão?</label>
+        <div>
+            <input type="checkbox" name="tipoAvaliacao" value="Exercicios"> Exercícios<br>
+            <input type="checkbox" name="tipoAvaliacao" value="TrabalhosEscritos"> Trabalhos Escritos<br>
+            <input type="checkbox" name="tipoAvaliacao" value="Provas"> Provas<br>
+            <input type="checkbox" name="tipoAvaliacao" value="Quizzes"> Questionários ou Quizzes<br>
+            <input type="checkbox" name="tipoAvaliacao" value="Apresentacoes"> Apresentações<br>
+            <input type="checkbox" name="tipoAvaliacao" value="Debates"> Debates ou Discussões<br>
+            <input type="checkbox" name="tipoAvaliacao" value="Praticos"> Trabalhos Práticos<br>
+            <input type="checkbox" name="tipoAvaliacao" value="Simulacoes"> Simulações<br>
+            <input type="checkbox" name="tipoAvaliacao" value="Autoavaliacao"> Autoavaliações e Reflexões Individuais<br>
+            <input type="checkbox" name="tipoAvaliacao" value="Outro"> Outro: <input type="text" name="tipoAvaliacaoOutro">
+        </div>
+    </div>
+
+    {{!-- Obstáculos ou desafios na missão --}}
+    <div>
+        <label>Que obstáculo ou desafio você gostaria de incluir nesta missão?</label>
+        <div>
+            <input type="checkbox" name="obstaculosMissao" value="Inimigos"> Inimigos<br>
+            <input type="checkbox" name="obstaculosMissao" value="PressaoTemporal"> Pressão Temporal<br>
+            <input type="checkbox" name="obstaculosMissao" value="QuebraCabecas"> Quebra-Cabeças ou Enigmas<br>
+            <input type="checkbox" name="obstaculosMissao" value="DesafiosFisicos"> Desafios Físicos<br>
+            <input type="checkbox" name="obstaculosMissao" value="RecursosLimitados"> Recursos Limitados<br>
+            <input type="checkbox" name="obstaculosMissao" value="EventosInesperados"> Eventos Inesperados<br>
+            <input type="checkbox" name="obstaculosMissao" value="ConflitosSociais"> Conflitos Sociais<br>
+            <input type="checkbox" name="obstaculosMissao" value="DecisoesDificeis"> Decisões Difíceis<br>
+            <input type="checkbox" name="obstaculosMissao" value="Outro"> Outro: <input type="text" name="obstaculosMissaoOutro">
+        </div>
+    </div>
+</div>
