@@ -11,7 +11,7 @@ const story_gen = async (req: Request, res: Response): Promise<void> => {
   try {
     const session = req.session as any;
 
-    if (!session.form1 || !session.form2) {
+    if (!session.form1 && !session.quickForm) {
       res
         .status(400)
         .send(
@@ -19,8 +19,21 @@ const story_gen = async (req: Request, res: Response): Promise<void> => {
         );
     }
 
-    // Gere o prompt com base nos dados do formulário completo
-    const prompt = await prompts.completePrompt(session.form1, session.form2);
+    let prompt: string = '';
+    let data: any;
+
+    if (session.quickForm) {
+      // Caso o usuário tenha escolhido a versão rápida
+      prompt = await prompts.quickPrompt(session.quickForm);
+      data = session.quickForm;
+    } else if (session.form1 && session.form2) {
+      // Caso o usuário tenha escolhido a versão completa
+      prompt = await prompts.completePrompt(session.form1, session.form2);
+      data = { form1: session.form1, form2: session.form2 };
+    } else {
+      // Caso nenhum formulário tenha sido respondido
+      res.status(400).send('Dados incompletos para gerar a narrativa.');
+    }
 
     // Chame a API Gemini para gerar a narrativa
     const narrativeMarkdown = await callGeminiAPI(prompt);
@@ -30,7 +43,7 @@ const story_gen = async (req: Request, res: Response): Promise<void> => {
 
     // Renderize o story.handlebars com a narrativa gerada
     res.render('main/story', {
-      data: { form1: session.form1, form2: session.form2 },
+      data,
       narrative: narrativeHTML,
     });
   } catch (error) {
@@ -45,9 +58,9 @@ const form1 = async (req: Request, res: Response): Promise<void> => {
   } else {
     try {
       const session = req.session as any;
-      session.form1 = req.body; // Salva as respostas do formulário 1
-      session.form2Data = []; // Inicializa um array para armazenar as missões
-      session.remainingMissions = parseInt(req.body.quantidadeMissoes, 10); // Quantidade de missões restantes
+      session.form1 = req.body;
+      session.form2Data = [];
+      session.remainingMissions = parseInt(req.body.quantidadeMissoes, 10);
       res.redirect('/forms/completeForm2');
     } catch (err) {
       res.status(500).send(err);
@@ -81,13 +94,13 @@ const form2 = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-const quickForm = async (req: Request, res: Response) => {
+const quickForm = async (req: Request, res: Response): Promise<void> => {
   if (req.method === 'GET') {
     res.render('forms/quickForm');
   } else {
     try {
       const session = req.session as any;
-      session.quickForm = req.body; // Salva as respostas do formulário rápido
+      session.quickForm = req.body;
       res.redirect('/main/story');
     } catch (err) {
       res.status(500).send(err);

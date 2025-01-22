@@ -84,8 +84,37 @@ Missão ${index + 1}:
 
 const quickPrompt = async (quickFormData: any): Promise<string> => {
   try {
-    const baseText = await fs.readFile('src/prompts/quickPrompt.txt', 'utf-8');
-    return `${baseText}\n\nFormulário Rápido: ${JSON.stringify(quickFormData)}`;
+    const temasGenerosNarrativos = removeCustomOption(
+      quickFormData.temasGenerosNarrativos || 'N/A',
+    );
+    const tipoAvaliacao = removeCustomOption(
+      quickFormData.tipoAvaliacao || 'N/A',
+    );
+    const obstaculosMissao = removeCustomOption(
+      quickFormData.obstaculosMissao || 'N/A',
+    );
+
+    let prompt = `
+    Crie uma narrativa com gamificação baseada nas seguintes informações coletadas e as adapte na estrutura da narrativa logo abaixo:
+    
+    - Formato da aplicação: ${quickFormData.formatoAplicacao || 'N/A'}
+    - Tema ou assunto a ser gamificado: ${
+      quickFormData.temaGamificacao || 'N/A'
+    }
+    - Organização dos participantes: ${quickFormData.interacao || 'N/A'}
+    - Tipo de interação principal: ${quickFormData.tipoInteracao || 'N/A'}
+    - Temas ou gêneros narrativos: ${temasGenerosNarrativos}
+    
+    Sobre a missão:
+
+    - Tipo de avaliação: ${tipoAvaliacao}
+    - Obstáculos na missão: ${obstaculosMissao}
+    `;
+    const basePrompt = await fs.readFile(
+      'src/prompts/quickPrompt.txt',
+      'utf-8',
+    );
+    return `${prompt}\n${basePrompt.trim()}`;
   } catch (error) {
     console.error('Erro ao carregar o texto base para o prompt rápido:', error);
     throw new Error('Falha ao gerar o prompt rápido.');

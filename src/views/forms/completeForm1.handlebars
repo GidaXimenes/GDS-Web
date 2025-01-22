@@ -1,9 +1,15 @@
-<div>
-    <h1>Projeto de Gamificação</h1>
+<div class='container d-flex justify-content-center align-items-center'>
+  <div class='card shadow-lg p-4' style='width: 100%; max-width: 800px;'>
+    <div class='card-body'>
+        <div>
+            <h1>Projeto de Gamificação</h1>
+        </div>
+        <form action="/forms/completeForm1" method="POST">
+            {{> completeQuestions/general}}
+            {{> completeQuestions/gamification}}
+            {{> completeQuestions/narrative}}
+            <button type="submit" class='btn btn-primary'>Enviar Formulário</button> 
+        </form>
+    </div>
+  </div>
 </div>
-<form action="/forms/completeForm1" method="POST">
-    {{> completeQuestions/general}}
-    {{> completeQuestions/gamification}}
-    {{> completeQuestions/narrative}}
-    <button type="submit">Enviar Formulário 1</button> 
-</form>

@@ -1,4 +1,10 @@
-<form action="/forms/completeForm2" method="POST">
-    {{> completeQuestions/missions}}
-    <button type="submit">Enviar Formulário 2</button>
-</form>
+<div class='container d-flex justify-content-center align-items-center'>
+  <div class='card shadow-lg p-4' style='width: 100%; max-width: 800px;'>
+    <div class='card-body'>
+        <form action="/forms/completeForm2" method="POST">
+            {{> completeQuestions/missions}}
+            <button type="submit" class='btn btn-primary'>Enviar Formulário</button>
+        </form>
+    </div>
+  </div>
+</div>
