@@ -1,0 +1,241 @@
+{{! Sobre a Missão }}
+<div>
+  <h2>Sobre a Missão</h2>
+
+  {{! Tipo de avaliação nesta missão }}
+  <div>
+    <label>Qual será o tipo de avaliação nesta missão?</label>
+    <div>
+      <input type='checkbox' name='tipoAvaliacao' value='Exercicios' />
+      Exercícios<br />
+      <input type='checkbox' name='tipoAvaliacao' value='Trabalhos Escritos' />
+      Trabalhos Escritos<br />
+      <input type='checkbox' name='tipoAvaliacao' value='Provas' />
+      Provas<br />
+      <input type='checkbox' name='tipoAvaliacao' value='Quizzes' />
+      Questionários ou Quizzes<br />
+      <input type='checkbox' name='tipoAvaliacao' value='Apresentações' />
+      Apresentações<br />
+      <input type='checkbox' name='tipoAvaliacao' value='Debates' />
+      Debates ou Discussões<br />
+      <input type='checkbox' name='tipoAvaliacao' value='Trabalhos Práticos' />
+      Trabalhos Práticos<br />
+      <input type='checkbox' name='tipoAvaliacao' value='Simulações' />
+      Simulações<br />
+      <input
+        type='checkbox'
+        name='tipoAvaliacao'
+        value='Autoavaliações e Reflexões Individuais'
+      />
+      Autoavaliações e Reflexões Individuais<br />
+      <input type='checkbox' name='tipoAvaliacao' value='Outro' />
+      Outro:
+      <input type='text' name='tipoAvaliacao' />
+    </div>
+  </div>
+
+  {{! Como será feita a avaliação do desempenho }}
+  <div>
+    <label>Como será feita a avaliação do desempenho dos participantes na
+      gamificação?</label>
+    <div>
+      <input
+        type='checkbox'
+        name='avaliacaoDesempenho'
+        value='Com base na pontuação total, exibida em rankings ou placares'
+      />
+      Com base na pontuação total, exibida em rankings ou placares<br />
+      <input
+        type='checkbox'
+        name='avaliacaoDesempenho'
+        value='Subida de nível ou progresso com base nas missões concluídas'
+      />
+      Subida de nível ou progresso com base nas missões concluídas<br />
+      <input
+        type='checkbox'
+        name='avaliacaoDesempenho'
+        value='Pelas conquistas ou distintivos (badges) alcançados'
+      />
+      Pelas conquistas ou distintivos (badges) alcançados<br />
+      <input
+        type='checkbox'
+        name='avaliacaoDesempenho'
+        value='Por feedback durante ou após as missões'
+      />
+      Por feedback durante ou após as missões<br />
+      <input
+        type='checkbox'
+        name='avaliacaoDesempenho'
+        value='Pela colaboração e contribuição em grupo'
+      />
+      Pela colaboração e contribuição em grupo<br />
+      <input
+        type='checkbox'
+        name='avaliacaoDesempenho'
+        value='Pelo desempenho em desafios'
+      />
+      Pelo desempenho em desafios<br />
+      <input
+        type='checkbox'
+        name='avaliacaoDesempenho'
+        value='Por autoavaliação e reflexão dos participantes'
+      />
+      Por autoavaliação e reflexão dos participantes<br />
+      <input type='checkbox' name='avaliacaoDesempenho' value='Outro' />
+      Outro:
+      <input type='text' name='avaliacaoDesempenho' />
+    </div>
+  </div>
+
+  {{! Descrição do conteúdo a ser aprendido }}
+  <div>
+    <label>Descreva sobre o conteúdo que será aprendido nesta missão de forma
+      mais detalhada:</label>
+    <textarea name='conteudoMissao' rows='4' required></textarea>
+  </div>
+
+  {{! Obstáculos ou desafios na missão }}
+  <div>
+    <label>Que obstáculo ou desafio você gostaria de incluir nesta missão?</label>
+    <div>
+      <input type='checkbox' name='obstaculosMissao' value='Inimigos' />
+      Inimigos<br />
+      <input type='checkbox' name='obstaculosMissao' value='Pressão Temporal' />
+      Pressão Temporal<br />
+      <input
+        type='checkbox'
+        name='obstaculosMissao'
+        value='Quebra-Cabeças ou Enigmas'
+      />
+      Quebra-Cabeças ou Enigmas<br />
+      <input type='checkbox' name='obstaculosMissao' value='Desafios Fisicos' />
+      Desafios Físicos<br />
+      <input
+        type='checkbox'
+        name='obstaculosMissao'
+        value='Recursos Limitados'
+      />
+      Recursos Limitados<br />
+      <input
+        type='checkbox'
+        name='obstaculosMissao'
+        value='Eventos Inesperados'
+      />
+      Eventos Inesperados<br />
+      <input
+        type='checkbox'
+        name='obstaculosMissao'
+        value='Conflitos Sociais'
+      />
+      Conflitos Sociais<br />
+      <input
+        type='checkbox'
+        name='obstaculosMissao'
+        value='Decisoes Dificeis'
+      />
+      Decisões Difíceis<br />
+      <input type='checkbox' name='obstaculosMissao' value='Outro' />
+      Outro:
+      <input type='text' name='obstaculosMissao' />
+    </div>
+  </div>
+
+  {{! Como o feedback será fornecido }}
+  <div>
+    <label>Como o feedback será fornecido aos participantes durante a
+      gamificação?</label>
+    <div>
+      <input type='radio' name='feedbackParticipantes' value='Imediato' />
+      Feedback imediato<br />
+      <input type='radio' name='feedbackParticipantes' value='Periodico' />
+      Feedback periódico<br />
+      <input type='radio' name='feedbackParticipantes' value='Coletivo' />
+      Feedback coletivo<br />
+      <input
+        type='radio'
+        name='feedbackParticipantes'
+        value='Individual e Personalizado'
+      />
+      Feedback individual e personalizado<br />
+      <input type='radio' name='feedbackParticipantes' value='Outro' />
+      Outro:
+      <input type='text' name='feedbackParticipantes' />
+    </div>
+
+  </div>
+
+  {{! Recompensas e reconhecimento }}
+  <div>
+    <label>De que forma os participantes devem ser recompensados e reconhecidos
+      por suas realizações nesta missão?</label>
+    <div>
+      <input
+        type='checkbox'
+        name='recompensas'
+        value='Através de distintivos (badges)'
+      />
+      Através de distintivos (badges)<br />
+      <input
+        type='checkbox'
+        name='recompensas'
+        value='Atribuindo títulos ou status'
+      />
+      Atribuindo títulos ou status<br />
+      <input
+        type='checkbox'
+        name='recompensas'
+        value='Recompensas físicas e tangíveis'
+      />
+      Recompensas físicas e tangíveis<br />
+      <input
+        type='checkbox'
+        name='recompensas'
+        value='Moedas ou pontos virtuais'
+      />
+      Moedas ou pontos virtuais<br />
+      <input
+        type='checkbox'
+        name='recompensas'
+        value='Reconhecimento público'
+      />
+      Reconhecimento público<br />
+      <input type='checkbox' name='recompensas' value='Outro' />
+      Outro:
+      <input type='text' name='recompensas' />
+    </div>
+  </div>
+
+  {{! O que acontece se alguém não completar a missão }}
+  <div>
+    <label>O que acontece se alguém não conseguir completar a missão?</label>
+    <div>
+      <input
+        type='radio'
+        name='naoCompletarMissao'
+        value='Pode tentar novamente quantas vezes quiser, sem penalidades'
+      />
+      Pode tentar novamente quantas vezes quiser, sem penalidades<br />
+      <input
+        type='radio'
+        name='naoCompletarMissao'
+        value='Sofre uma penalidade e não pode tentar de novo'
+      />
+      Sofre uma penalidade e não pode tentar de novo<br />
+      <input
+        type='radio'
+        name='naoCompletarMissao'
+        value='Recebe feedback personalizado com dicas e pode tentar novamente'
+      />
+      Recebe feedback personalizado com dicas e pode tentar novamente<br />
+      <input
+        type='radio'
+        name='naoCompletarMissao'
+        value='Recebe um prazo adicional para refazer a missão, com perda de pontos'
+      />
+      Recebe um prazo adicional para refazer a missão, com perda de pontos<br />
+      <input type='radio' name='naoCompletarMissao' value='Outro' />
+      Outro:
+      <input type='text' name='naoCompletarMissao' />
+    </div>
+  </div>
+</div>
