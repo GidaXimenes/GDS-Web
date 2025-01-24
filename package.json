@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "npx tsc",
+    "build": "npx tsc && cp -r src/views build/views",
     "start:prod": "node build/index.js"
   },
   "author": "Gideao",

@@ -1,0 +1,39 @@
+Utilize as informações fornecidas acima para criar uma narrativa seguindo a estrutura abaixo. Use as respostas específicas para adaptar a narrativa ao contexto exato da gamificação, incorporando elementos didáticos que motivem e engajem os participantes, sempre alinhados aos temas e gêneros informados. Não seja genérico na narrativa. Dê um nome para a narrativa. 
+
+1. Início - "Era uma vez"
+Crie o mundo onde a narrativa ocorrerá, atribuindo um nome e características únicas (como ambiente, época e regras/leis). Descreva o mundo do jogo com base no tema e assunto escolhidos, destacando detalhes do ambiente, contexto histórico ou temporal e as regras que regem esse universo, além dos desafios ou problemas que o afetam. Considere os interesses dos participantes para criar um cenário que ressoe com eles. Seja criativo, lembre-se que precisa ser coerente com as informações coletadas.
+
+2. Fale sobre o JOGADOR
+Descreva a rotina diária do herói/jogador, suas manias, fraquezas e interações conforme a forma de interação escolhida. Integre elementos de personalização, relacionamentos e organização dos participantes para enriquecer a trama e ressoar com suas experiências.
+
+3. Acontecimento - "Porém um dia"
+Introduza um evento disruptivo (vilão, desastre etc.) conectado ao tema de aprendizagem que rompe a rotina. Detalhe o vilão ou desafio, seu plano e impacto, e apresente aliados (NPCs, mentores) que ajudarão na resolução, criando tensão e motivação para a aventura. Seja detalhista, formule bem essa parte do enredo, seja criativo e não deixe a narrativa genérica.
+
+4. Chamada para a Missão - "E agora?"
+Explique o início da jornada: tipos de missões, objetivos de aprendizagem, desafios, regras, sistema de pontuação, mapa, feedback e recompensas. Descreva o novo mundo, objetivos, desejos do jogador, obstáculos e recompensas alinhados ao tema. Aborde a organização (em equipes ou individual), consequências de não completar a missão (tentativas, penalidades, missões alternativas) e como o feedback orienta a progressão. Finalize detalhando a lógica de organização, interação e feedback.
+
+5. Jornada Diária
+Título da missão: conforme o tema e conteúdo.
+Objetivo de Aprendizagem: baseado no conteúdo da missão.
+Descrição da Missão: detalhe cenário (presencial/online), personagens, obstáculos, problemas, mecânicas de avaliação, feedback e recompensas. Seja criativo em todos esses aspectos, não seja genérico, formule bem essa descrição.
+Consequências do Fracasso: Quais as consequências caso os jogadores falharem na missão
+Seja criativo e específico nos obstáculos, formulando de acordo com as informações fornecidas
+
+6. Sobre pontuação:
+Proponha um sistema de pontuação envolvendo avaliações, ganhos e comportamentos.
+Liste emblemas, distintivos ou outras formas de pontuação com nomes temáticos.
+Explique o que acontece se alguém não cumprir uma missão, impacto na pontuação e se a presença conta como ponto.
+Deixe clara a forma de cálculo dos pontos (por exemplo: Missões realizadas + Ganhos + Presença = Próximo Nível de XP).
+
+7. Clímax - "Até que..."
+Construa o ápice da história com o maior desafio, conectando eventos anteriores, confrontando o vilão ou obstáculo principal e testando todo o conhecimento adquirido.
+É PRECISO:
+Explorar ao máximo o vilão.
+Conectar com elementos da jornada para criar flashbacks.
+Mostrar que tudo visto na jornada deve ser usado agora.
+Dar dicas para vencer a etapa.
+Aplicar o conteúdo mais complexo.
+Fazer o jogador usar habilidades desenvolvidas ao longo da jornada.
+
+8. Fim - "E finalmente"
+Descreva o desfecho: celebração das conquistas, prêmios, reconhecimento, análise de pontuações e placar. Inclua possibilidade de retorno ao cotidiano ou novas aventuras, finalizando a história com a restauração ou mudança do mundo a partir das ações do jogador.
