@@ -121,4 +121,20 @@ const quickPrompt = async (quickFormData: any): Promise<string> => {
   }
 };
 
-export default { completePrompt, quickPrompt };
+const slidePrompt = async (narrative: any): Promise<string> => {
+  try {
+    let prompt = `Receba o seguinte texto de uma narrativa gamificada para uso educacional:
+    \n${narrative}\n`;
+
+    const basePrompt = await fs.readFile(
+      'src/prompts/slidePrompt.txt',
+      'utf-8',
+    );
+    return `${prompt}\n${basePrompt.trim()}`;
+  } catch (error) {
+    console.error('Erro ao carregar o texto base para o prompt:', error);
+    throw new Error('Falha ao gerar o prompt.');
+  }
+};
+
+export default { completePrompt, quickPrompt, slidePrompt };

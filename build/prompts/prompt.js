@@ -93,4 +93,16 @@ const quickPrompt = (quickFormData) => __awaiter(void 0, void 0, void 0, functio
         throw new Error('Falha ao gerar o prompt rápido.');
     }
 });
-exports.default = { completePrompt, quickPrompt };
+const slidePrompt = (narrative) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let prompt = `Receba o seguinte texto de uma narrativa gamificada para uso educacional:
+    \n${narrative}\n`;
+        const basePrompt = yield promises_1.default.readFile('src/prompts/slidePrompt.txt', 'utf-8');
+        return `${prompt}\n${basePrompt.trim()}`;
+    }
+    catch (error) {
+        console.error('Erro ao carregar o texto base para o prompt:', error);
+        throw new Error('Falha ao gerar o prompt.');
+    }
+});
+exports.default = { completePrompt, quickPrompt, slidePrompt };

@@ -1,37 +1,50 @@
 <div class='container d-flex justify-content-center align-items-center'>
   <div class='card shadow-lg p-4' style='width: 100%; max-width: 800px;'>
     <div class='card-body'>
-      <h1>Sua História</h1>
+      <h2 class='mb-4'>Narrativa e Instruções</h2>
 
-      <!--{{#if data.form1}}
-        <h2>Respostas do Formulário Completo</h2>
+      <!-- Botões para alternar entre narrativa e instruções -->
+      <div class='mb-4'>
+        <button
+          class='btn btn-primary'
+          onclick="showContent('narrative')"
+        >Mostrar Narrativa</button>
+        <button
+          class='btn btn-secondary'
+          onclick="showContent('instructions')"
+        >Mostrar Instruções</button>
+      </div>
 
-        <h3>Formulário 1</h3>
-        {{#each data.form1}}
-          <p><strong>{{@key}}:</strong> {{this}}</p>
-        {{/each}}
+      <!-- Div para exibir a narrativa -->
+      <div id='narrative' style='display: none;'>
+        <h3>Narrativa:</h3>
+        <div>{{{narrative}}}</div>
+      </div>
 
-        <h3>Formulário 2 (Missões)</h3>
-        {{#each data.form2}}
-          <div>
-            <h4>Missão {{@index}}</h4>
-            {{#each this}}
-              <p><strong>{{@key}}:</strong> {{this}}</p>
-            {{/each}}
-          </div>
-        {{/each}}
-      {{else}}
-        <h2>Respostas do Formulário Rápido</h2>
-        {{#each data}}
-          <p><strong>{{@key}}:</strong> {{this}}</p>
-        {{/each}}
-      {{/if}}-->
+      <!-- Div para exibir as instruções -->
+      <div id='instructions' style='display: none;'>
+        <h3>Instruções:</h3>
+        <div>{{{instructions}}}</div>
+      </div>
 
-      <h2>Texto Gerado pela IA:</h2>
-      <div>{{{narrative}}}</div>
+      <!-- Botão para download do PDF -->
+      <div class='mt-4'>
+        <a href='/download-pdf' class='btn btn-success' target='_blank'>Baixar
+          PDF</a>
+      </div>
 
       <!-- Botão para voltar ao início -->
-      <button onclick="location.href='/'" class='btn btn-primary'>Voltar ao Início</button>
+      <div class='mt-4'>
+        <button onclick="location.href='/'" class='btn btn-danger'>Voltar ao
+          Início</button>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  function showContent(section) {
+  document.getElementById('narrative').style.display = section === 'narrative' ?
+  'block' : 'none'; document.getElementById('instructions').style.display =
+  section === 'instructions' ? 'block' : 'none'; }
+</script>

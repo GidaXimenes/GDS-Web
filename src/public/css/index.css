@@ -1,0 +1,82 @@
+/* Botão Sobre (fixo no canto esquerdo) */
+.about-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000; /* pra ficar acima de outros elementos */
+}
+
+/* Quadrados grandes */
+.big-square {
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  border: 3px solid #0d6efd; /* cor do btn-primary (Bootstrap) */
+  color: #0d6efd;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+}
+
+.big-square:hover {
+  background-color: #0d6efd; /* muda cor de fundo no hover */
+  color: #fff;
+}
+
+/* --- Overlay e Popup do Sobre --- */
+#aboutOverlay {
+  display: none; /* começa invisível */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* fundo semi-transparente escuro */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+#aboutPopup {
+  background-color: #fff;
+  width: 60%;
+  max-height: 80vh; /* se tiver texto grande, rola */
+  margin: 50px auto;
+  padding: 20px;
+  position: relative;
+  overflow-y: auto; /* rolagem se precisar */
+  border-radius: 10px;
+}
+
+#btn-close-about {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+}
+
+#btn-close-about:hover {
+  color: red;
+}
+
+#aboutContent {
+  margin-top: 2rem;
+}
+
+/* Se quiser um scroll suave no popup */
+#aboutPopup::-webkit-scrollbar {
+  width: 10px;
+}
+#aboutPopup::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}

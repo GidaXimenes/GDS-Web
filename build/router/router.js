@@ -14,4 +14,5 @@ router.get('/forms/completeForm2', main_1.default.form2);
 router.post('/forms/completeForm2', main_1.default.form2);
 router.get('/forms/quickForm', main_1.default.quickForm);
 router.post('/forms/quickForm', main_1.default.quickForm);
+router.get('/download-pdf', main_1.default.generatePDF);
 exports.default = router;
