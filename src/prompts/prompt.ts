@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import path from 'path';
 
 const removeCustomOption = (response: string | string[]): string => {
   if (Array.isArray(response)) {
@@ -67,7 +68,7 @@ Missão ${index + 1}:
     });
 
     const basePrompt = await fs.readFile(
-      'src/prompts/completePrompt.txt',
+      path.join(__dirname, 'completePrompt.txt'),
       'utf-8',
     );
 
@@ -110,7 +111,7 @@ const quickPrompt = async (quickFormData: any): Promise<string> => {
     - Obstáculos na missão: ${obstaculosMissao}
     `;
     const basePrompt = await fs.readFile(
-      'src/prompts/quickPrompt.txt',
+      path.join(__dirname, 'completePrompt.txt'),
       'utf-8',
     );
     return `${prompt}\n${basePrompt.trim()}`;
@@ -126,7 +127,7 @@ const slidePrompt = async (narrative: any): Promise<string> => {
     \n${narrative}\n`;
 
     const basePrompt = await fs.readFile(
-      'src/prompts/slidePrompt.txt',
+      path.join(__dirname, 'completePrompt.txt'),
       'utf-8',
     );
     return `${prompt}\n${basePrompt.trim()}`;
