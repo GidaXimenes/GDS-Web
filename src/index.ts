@@ -16,7 +16,7 @@ app.engine(
     layoutsDir: `${__dirname}/views/layouts`,
     defaultLayout: 'main',
     partialsDir: `${__dirname}/views/partials`,
-    helpers: require(`${__dirname}/views/helpers/helpers.ts`),
+    helpers: require(`${__dirname}/views/helpers/helpers`),
   }),
 );
 app.set('view engine', 'handlebars');

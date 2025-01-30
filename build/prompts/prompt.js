@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const promises_1 = __importDefault(require("fs/promises"));
+const path_1 = __importDefault(require("path"));
 const removeCustomOption = (response) => {
     if (Array.isArray(response)) {
         return response.filter((item) => item !== 'Outro').join(', ');
@@ -57,7 +58,7 @@ Missão ${index + 1}:
 - Consequência em caso de missão não concluída: ${naoCompletarMissao}
 `;
         });
-        const basePrompt = yield promises_1.default.readFile('src/prompts/completePrompt.txt', 'utf-8');
+        const basePrompt = yield promises_1.default.readFile(path_1.default.join(__dirname, 'completePrompt.txt'), 'utf-8');
         return `${prompt}\n${basePrompt.trim()}`;
     }
     catch (error) {
@@ -84,7 +85,7 @@ const quickPrompt = (quickFormData) => __awaiter(void 0, void 0, void 0, functio
     - Tipo de avaliação: ${tipoAvaliacao}
     - Obstáculos na missão: ${obstaculosMissao}
     `;
-        const basePrompt = yield promises_1.default.readFile('src/prompts/quickPrompt.txt', 'utf-8');
+        const basePrompt = yield promises_1.default.readFile(path_1.default.join(__dirname, 'completePrompt.txt'), 'utf-8');
         return `${prompt}\n${basePrompt.trim()}`;
     }
     catch (error) {
@@ -96,7 +97,7 @@ const slidePrompt = (narrative) => __awaiter(void 0, void 0, void 0, function* (
     try {
         let prompt = `Receba o seguinte texto de uma narrativa gamificada para uso educacional:
     \n${narrative}\n`;
-        const basePrompt = yield promises_1.default.readFile('src/prompts/slidePrompt.txt', 'utf-8');
+        const basePrompt = yield promises_1.default.readFile(path_1.default.join(__dirname, 'completePrompt.txt'), 'utf-8');
         return `${prompt}\n${basePrompt.trim()}`;
     }
     catch (error) {
