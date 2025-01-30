@@ -102,6 +102,9 @@ const story_gen = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     catch (error) {
         console.error('Erro ao gerar a narrativa:', error);
         res.status(500).send('Erro ao gerar a narrativa.');
+        res
+            .status(503)
+            .send('O modelo do Gemini está sobrecarregado =(, tente novamante em alguns instantes');
     }
 });
 const form1 = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -223,7 +226,7 @@ const generatePDF = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         pdfDocGenerator.getBuffer((buffer) => {
             res.writeHead(200, {
                 'Content-Type': 'application/pdf',
-                'Content-Disposition': 'attachment; filename="narrativa.pdf"',
+                'Content-Disposition': 'attachment; filename="narrativa gamificada.pdf"',
                 'Content-Length': buffer.length,
             });
             res.end(buffer);

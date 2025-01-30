@@ -64,6 +64,11 @@ const story_gen = async (req: Request, res: Response): Promise<void> => {
   } catch (error) {
     console.error('Erro ao gerar a narrativa:', error);
     res.status(500).send('Erro ao gerar a narrativa.');
+    res
+      .status(503)
+      .send(
+        'O modelo do Gemini está sobrecarregado =(, tente novamante em alguns instantes',
+      );
   }
 };
 
