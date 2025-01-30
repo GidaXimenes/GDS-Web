@@ -1,0 +1,404 @@
+<div class='mb-4'>
+  {{! Sobre a Missão }}
+  <h2 class='mb-3'>Sobre a Missão</h2>
+
+  {{! Tipo de avaliação nesta missão }}
+  <div class='mb-3'>
+    <label class='form-label fw-bold'>
+      Qual será o tipo de avaliação nesta missão?
+    </label>
+
+    <!-- Exercícios -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='exercicios'
+        name='tipoAvaliacao'
+        value='Exercicios'
+      />
+      <label class='form-check-label' for='exercicios'>Exercícios</label>
+    </div>
+
+    <!-- Trabalhos Escritos -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='trabalhosEscritos'
+        name='tipoAvaliacao'
+        value='Trabalhos Escritos'
+      />
+      <label class='form-check-label' for='trabalhosEscritos'>
+        Trabalhos Escritos
+      </label>
+    </div>
+
+    <!-- Provas -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='provas'
+        name='tipoAvaliacao'
+        value='Provas'
+      />
+      <label class='form-check-label' for='provas'>Provas</label>
+    </div>
+
+    <!-- Quizzes -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='quizzes'
+        name='tipoAvaliacao'
+        value='Quizzes'
+      />
+      <label class='form-check-label' for='quizzes'>
+        Questionários ou Quizzes
+      </label>
+    </div>
+
+    <!-- Apresentações -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='apresentacoes'
+        name='tipoAvaliacao'
+        value='Apresentações'
+      />
+      <label class='form-check-label' for='apresentacoes'>
+        Apresentações
+      </label>
+    </div>
+
+    <!-- Debates ou Discussões -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='debates'
+        name='tipoAvaliacao'
+        value='Debates'
+      />
+      <label class='form-check-label' for='debates'>
+        Debates ou Discussões
+      </label>
+    </div>
+
+    <!-- Trabalhos Práticos -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='trabalhosPraticos'
+        name='tipoAvaliacao'
+        value='Trabalhos Práticos'
+      />
+      <label class='form-check-label' for='trabalhosPraticos'>
+        Trabalhos Práticos
+      </label>
+    </div>
+
+    <!-- Simulações -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='simulacoes'
+        name='tipoAvaliacao'
+        value='Simulações'
+      />
+      <label class='form-check-label' for='simulacoes'>
+        Simulações
+      </label>
+    </div>
+
+    <!-- Autoavaliações e Reflexões Individuais -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='autoavaliacoes'
+        name='tipoAvaliacao'
+        value='Autoavaliações e Reflexões Individuais'
+      />
+      <label class='form-check-label' for='autoavaliacoes'>
+        Autoavaliações e Reflexões Individuais
+      </label>
+    </div>
+
+    <!-- Outro (com lógica de desabilitado) -->
+    <div class='form-check mt-2'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='tipoAvaliacaoOutro'
+        name='tipoAvaliacao'
+        value='Outro'
+        onchange="document.getElementById('tipoAvaliacaoOutroText').disabled = !this.checked"
+      />
+      <label class='form-check-label' for='tipoAvaliacaoOutro'>Outro:</label>
+      <br />
+      <input
+        type='text'
+        id='tipoAvaliacaoOutroText'
+        name='tipoAvaliacao'
+        class='form-control mt-1'
+        placeholder='Descreva outro tipo de avaliação...'
+        disabled
+      />
+    </div>
+  </div>
+
+  {{! Como será feita a avaliação do desempenho }}
+  <div class='mb-3'>
+    <label class='form-label fw-bold'>
+      Como será feita a avaliação do desempenho dos participantes na
+      gamificação?
+    </label>
+
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='avaliacaoRanking'
+        name='avaliacaoDesempenho'
+        value='Com base na pontuação total, exibida em rankings ou placares'
+      />
+      <label class='form-check-label' for='avaliacaoRanking'>
+        Com base na pontuação total, exibida em rankings ou placares
+      </label>
+    </div>
+
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='avaliacaoSubidaNivel'
+        name='avaliacaoDesempenho'
+        value='Subida de nível ou progresso com base nas missões concluídas'
+      />
+      <label class='form-check-label' for='avaliacaoSubidaNivel'>
+        Subida de nível ou progresso com base nas missões concluídas
+      </label>
+    </div>
+
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='avaliacaoBadges'
+        name='avaliacaoDesempenho'
+        value='Pelas conquistas ou distintivos (badges) alcançados'
+      />
+      <label class='form-check-label' for='avaliacaoBadges'>
+        Pelas conquistas ou distintivos (badges) alcançados
+      </label>
+    </div>
+
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='avaliacaoFeedback'
+        name='avaliacaoDesempenho'
+        value='Por feedback durante ou após as missões'
+      />
+      <label class='form-check-label' for='avaliacaoFeedback'>
+        Por feedback durante ou após as missões
+      </label>
+    </div>
+
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='avaliacaoGrupo'
+        name='avaliacaoDesempenho'
+        value='Pela colaboração e contribuição em grupo'
+      />
+      <label class='form-check-label' for='avaliacaoGrupo'>
+        Pela colaboração e contribuição em grupo
+      </label>
+    </div>
+
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='avaliacaoDesafios'
+        name='avaliacaoDesempenho'
+        value='Pelo desempenho em desafios'
+      />
+      <label class='form-check-label' for='avaliacaoDesafios'>
+        Pelo desempenho em desafios
+      </label>
+    </div>
+
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='avaliacaoAuto'
+        name='avaliacaoDesempenho'
+        value='Por autoavaliação e reflexão dos participantes'
+      />
+      <label class='form-check-label' for='avaliacaoAuto'>
+        Por autoavaliação e reflexão dos participantes
+      </label>
+    </div>
+
+    <!-- Outro (com desabilitado) -->
+    <div class='form-check mt-2'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='avaliacaoOutro'
+        name='avaliacaoDesempenho'
+        value='Outro'
+        onchange="document.getElementById('avaliacaoOutroText').disabled = !this.checked"
+      />
+      <label class='form-check-label' for='avaliacaoOutro'>
+        Outro:
+      </label>
+      <br />
+      <input
+        type='text'
+        id='avaliacaoOutroText'
+        name='avaliacaoDesempenho'
+        class='form-control mt-1'
+        placeholder='Descreva outro modo de avaliação...'
+        disabled
+      />
+    </div>
+  </div>
+
+  {{! Descrição do conteúdo a ser aprendido }}
+  <div class='mb-3'>
+    <label class='form-label fw-bold'>
+      Descreva sobre o conteúdo que será aprendido nesta missão de forma mais
+      detalhada:
+    </label>
+    <textarea
+      name='conteudoMissao'
+      rows='4'
+      required
+      class='form-control'
+    ></textarea>
+  </div>
+
+  {{! Obstáculos ou desafios na missão }}
+  <div class='mb-3'>
+    <label class='form-label fw-bold'>
+      Que obstáculo ou desafio você gostaria de incluir nesta missão?
+    </label>
+
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='inimigos'
+        name='obstaculosMissao'
+        value='Inimigos'
+      />
+      <label class='form-check-label' for='inimigos'>Inimigos</label>
+    </div>
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='pressaoTemporal'
+        name='obstaculosMissao'
+        value='Pressão Temporal'
+      />
+      <label class='form-check-label' for='pressaoTemporal'>Pressão Temporal</label>
+    </div>
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='quebraCabecas'
+        name='obstaculosMissao'
+        value='Quebra-Cabeças ou Enigmas'
+      />
+      <label class='form-check-label' for='quebraCabecas'>Quebra-Cabeças ou
+        Enigmas</label>
+    </div>
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='desafiosFisicos'
+        name='obstaculosMissao'
+        value='Desafios Fisicos'
+      />
+      <label class='form-check-label' for='desafiosFisicos'>Desafios Físicos</label>
+    </div>
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='recursosLimitados'
+        name='obstaculosMissao'
+        value='Recursos Limitados'
+      />
+      <label class='form-check-label' for='recursosLimitados'>Recursos Limitados</label>
+    </div>
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='eventosInesperados'
+        name='obstaculosMissao'
+        value='Eventos Inesperados'
+      />
+      <label class='form-check-label' for='eventosInesperados'>Eventos
+        Inesperados</label>
+    </div>
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='conflitosSociais'
+        name='obstaculosMissao'
+        value='Conflitos Sociais'
+      />
+      <label class='form-check-label' for='conflitosSociais'>Conflitos Sociais</label>
+    </div>
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='decisoesDificeis'
+        name='obstaculosMissao'
+        value='Decisoes Dificeis'
+      />
+      <label class='form-check-label' for='decisoesDificeis'>Decisões Difíceis</label>
+    </div>
+
+    <!-- Outro (com desabilitado) -->
+    <div class='form-check mt-2'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='obstaculosOutro'
+        name='obstaculosMissao'
+        value='Outro'
+        onchange="document.getElementById('obstaculosOutroText').disabled = !this.checked"
+      />
+      <label class='form-check-label' for='obstaculosOutro'>Outro:</label>
+      <br />
+      <input
+        type='text'
+        id='obstaculosOutroText'
+        name='obstaculosMissao'
+        class='form-control mt-1'
+        placeholder='Descreva outro obstáculo...'
+        disabled
+      />
+    </div>
+  </div>
+</div>

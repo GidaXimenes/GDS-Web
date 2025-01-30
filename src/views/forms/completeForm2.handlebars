@@ -26,8 +26,10 @@
 
       {{!-- Formulário --}}
       <form action="/forms/completeForm2" method="POST">
-        {{!-- partial com as perguntas da missão --}}
-        {{> completeQuestions/missions}}
+        {{!-- partial com a parte 1 das perguntas da missão --}}
+        {{> completeQuestions/missions1}}
+        {{!-- partial com a parte 2 das perguntas da missão --}}
+        {{> completeQuestions/missions2}}
 
         <div class="mt-4 text-end">
           {{!-- Se for a última, pode trocar o texto do botão, 

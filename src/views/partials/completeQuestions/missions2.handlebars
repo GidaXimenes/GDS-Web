@@ -1,0 +1,287 @@
+<div class='mb-4'>
+  {{! Como o feedback será fornecido }}
+  <div class='mb-3'>
+    <label class='form-label fw-bold'>
+      Como o feedback será fornecido aos participantes durante a gamificação?
+    </label>
+
+    <!-- Imediato -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='feedbackImediato'
+        name='feedbackParticipantes'
+        value='Imediato'
+      />
+      <label class='form-check-label' for='feedbackImediato'>
+        Feedback imediato
+      </label>
+    </div>
+
+    <!-- Periódico -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='feedbackPeriodico'
+        name='feedbackParticipantes'
+        value='Periodico'
+      />
+      <label class='form-check-label' for='feedbackPeriodico'>
+        Feedback periódico
+      </label>
+    </div>
+
+    <!-- Coletivo -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='feedbackColetivo'
+        name='feedbackParticipantes'
+        value='Coletivo'
+      />
+      <label class='form-check-label' for='feedbackColetivo'>
+        Feedback coletivo
+      </label>
+    </div>
+
+    <!-- Individual e Personalizado -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='feedbackIndividual'
+        name='feedbackParticipantes'
+        value='Individual e Personalizado'
+      />
+      <label class='form-check-label' for='feedbackIndividual'>
+        Feedback individual e personalizado
+      </label>
+    </div>
+
+    <!-- Outro (desabilitado até marcar) -->
+    <div class='form-check mt-2'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='feedbackOutro'
+        name='feedbackParticipantes'
+        value='Outro'
+        onchange="document.getElementById('feedbackOutroText').disabled = !this.checked"
+      />
+      <label class='form-check-label' for='feedbackOutro'>
+        Outro:
+      </label>
+      <br />
+      <input
+        type='text'
+        id='feedbackOutroText'
+        name='feedbackParticipantes'
+        class='form-control mt-1'
+        placeholder='Descreva outro tipo de feedback...'
+        disabled
+      />
+    </div>
+  </div>
+
+  {{! Recompensas e reconhecimento }}
+  <div class='mb-3'>
+    <label class='form-label fw-bold'>
+      De que forma os participantes devem ser recompensados e reconhecidos por
+      suas realizações nesta missão?
+    </label>
+
+    <!-- Através de distintivos (badges) -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='recompensaBadges'
+        name='recompensas'
+        value='Através de distintivos (badges)'
+      />
+      <label class='form-check-label' for='recompensaBadges'>
+        Através de distintivos (badges)
+      </label>
+    </div>
+
+    <!-- Atribuindo títulos ou status -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='recompensaTitulos'
+        name='recompensas'
+        value='Atribuindo títulos ou status'
+      />
+      <label class='form-check-label' for='recompensaTitulos'>
+        Atribuindo títulos ou status
+      </label>
+    </div>
+
+    <!-- Recompensas físicas e tangíveis -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='recompensaFisicas'
+        name='recompensas'
+        value='Recompensas físicas e tangíveis'
+      />
+      <label class='form-check-label' for='recompensaFisicas'>
+        Recompensas físicas e tangíveis
+      </label>
+    </div>
+
+    <!-- Moedas ou pontos virtuais -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='recompensaMoedas'
+        name='recompensas'
+        value='Moedas ou pontos virtuais'
+      />
+      <label class='form-check-label' for='recompensaMoedas'>
+        Moedas ou pontos virtuais
+      </label>
+    </div>
+
+    <!-- Reconhecimento público -->
+    <div class='form-check'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='recompensaPublico'
+        name='recompensas'
+        value='Reconhecimento público'
+      />
+      <label class='form-check-label' for='recompensaPublico'>
+        Reconhecimento público
+      </label>
+    </div>
+
+    <!-- Outro (desabilitado até marcar) -->
+    <div class='form-check mt-2'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='recompensaOutro'
+        name='recompensas'
+        value='Outro'
+        onchange="document.getElementById('recompensaOutroText').disabled = !this.checked"
+      />
+      <label class='form-check-label' for='recompensaOutro'>Outro:</label>
+      <br />
+      <input
+        type='text'
+        id='recompensaOutroText'
+        name='recompensas'
+        class='form-control mt-1'
+        placeholder='Descreva outra forma de reconhecimento...'
+        disabled
+      />
+    </div>
+  </div>
+
+  {{! O que acontece se alguém não completar a missão }}
+  <div class='mb-3'>
+    <label class='form-label fw-bold'>
+      O que acontece se alguém não conseguir completar a missão?
+    </label>
+
+    <!-- Pode tentar novamente quantas vezes quiser... -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='naoCompletar1'
+        name='naoCompletarMissao'
+        value='Pode tentar novamente quantas vezes quiser, sem penalidades'
+      />
+      <label class='form-check-label' for='naoCompletar1'>
+        Pode tentar novamente quantas vezes quiser, sem penalidades
+      </label>
+    </div>
+
+    <!-- Sofre penalidade e não pode tentar de novo -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='naoCompletar2'
+        name='naoCompletarMissao'
+        value='Sofre uma penalidade e não pode tentar de novo'
+      />
+      <label class='form-check-label' for='naoCompletar2'>
+        Sofre uma penalidade e não pode tentar de novo
+      </label>
+    </div>
+
+    <!-- Recebe feedback personalizado e pode tentar novamente -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='naoCompletar3'
+        name='naoCompletarMissao'
+        value='Recebe feedback personalizado com dicas e pode tentar novamente'
+      />
+      <label class='form-check-label' for='naoCompletar3'>
+        Recebe feedback personalizado com dicas e pode tentar novamente
+      </label>
+    </div>
+
+    <!-- Recebe prazo adicional com perda de pontos -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='naoCompletar4'
+        name='naoCompletarMissao'
+        value='Recebe um prazo adicional para refazer a missão, com perda de pontos'
+      />
+      <label class='form-check-label' for='naoCompletar4'>
+        Recebe um prazo adicional para refazer a missão, com perda de pontos
+      </label>
+    </div>
+
+    <!-- Recebe missões alternativas... -->
+    <div class='form-check'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='naoCompletar5'
+        name='naoCompletarMissao'
+        value='Recebe missões alternativas ou novos desafios para garantir participação'
+      />
+      <label class='form-check-label' for='naoCompletar5'>
+        Recebe missões alternativas ou novos desafios para garantir participação
+      </label>
+    </div>
+
+    <!-- Outro (desabilitado até marcar) -->
+    <div class='form-check mt-2'>
+      <input
+        type='radio'
+        class='form-check-input'
+        id='naoCompletarOutro'
+        name='naoCompletarMissao'
+        value='Outro'
+        onchange="document.getElementById('naoCompletarOutroText').disabled = !this.checked"
+      />
+      <label class='form-check-label' for='naoCompletarOutro'>Outro:</label>
+      <br />
+      <input
+        type='text'
+        id='naoCompletarOutroText'
+        name='naoCompletarMissao'
+        class='form-control mt-1'
+        placeholder='Descreva outra forma de penalidade...'
+        disabled
+      />
+    </div>
+  </div>
+</div>
