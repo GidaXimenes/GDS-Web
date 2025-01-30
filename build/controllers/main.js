@@ -109,7 +109,7 @@ const story_gen = (req, res) =>
     try {
       const session = req.session;
       if (!session.form1 && !session.quickForm) {
-        return res
+        res
           .status(400)
           .send('Formulários incompletos. Preencha os formulários primeiro.');
       }
@@ -155,7 +155,7 @@ const story_gen = (req, res) =>
       });
     } catch (error) {
       console.error('Erro ao gerar a narrativa:', error);
-      return res.status(500).send('Erro ao gerar a narrativa.');
+      res.status(500).send('Erro ao gerar a narrativa.');
     }
   });
 const form1 = (req, res) =>
