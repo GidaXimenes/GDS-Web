@@ -1,25 +1,68 @@
-<div class='container d-flex justify-content-center align-items-center'>
-  <div class='card shadow-lg p-4' style='width: 100%; max-width: 800px;'>
-    <div class='card-body'>
-      <header>
-        <h1>Qual versão você escolhe?</h1>
-      </header>
-      <main>
-        <div class='button-container'>
-          <button
-            onclick="location.href='forms/completeForm1'"
-            class='btn btn-primary'
-          >Formulário Completo</button>
-          <button
-            onclick="location.href='forms/quickForm'"
-            class='btn btn-primary'
-          >Formulário Rápido</button>
-          <button
-            onclick="location.href='/'"
-            class='btn btn-primary'
-          >Sobre</button>
-        </div>
-      </main>
+<!-- views/main/index.handlebars -->
+<div
+  class='d-flex flex-column align-items-center justify-content-center'
+  style='min-height: 80vh;'
+>
+  <h1 class='mb-4'>Qual versão você escolhe?</h1>
+
+  <!-- Container dos 2 quadrados grandes -->
+  <div class='d-flex gap-5'>
+    <div class='big-square' onclick="location.href='forms/completeForm1'">
+      <span>Formulário</br> Completo</span>
+    </div>
+    <div class='big-square' onclick="location.href='forms/quickForm'">
+      <span>Formulário</br> Rápido</span>
+    </div>
+  </div>
+
+  <!-- Botão "Sobre" (usa modal do Bootstrap) -->
+  <button
+    type='button'
+    class='btn btn-secondary mt-4'
+    data-bs-toggle='modal'
+    data-bs-target='#sobreModal'
+  >
+    Sobre
+  </button>
+</div>
+
+<!-- Modal do Bootstrap -->
+<div
+  class='modal fade'
+  id='sobreModal'
+  tabindex='-1'
+  aria-labelledby='sobreModalLabel'
+  aria-hidden='true'
+>
+  <div class='modal-dialog modal-lg'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='sobreModalLabel'>Sobre</h5>
+        <button
+          type='button'
+          class='btn-close'
+          data-bs-dismiss='modal'
+          aria-label='Fechar'
+        ></button>
+      </div>
+      <div class='modal-body'>
+        <!-- Aqui vai o conteúdo explicando como funcionam os formulários -->
+        <p>
+          Coloque aqui um texto grande explicando as diferenças entre o
+          Formulário Completo e o Rápido, e o objetivo do projeto. Se o texto
+          for muito extenso, o modal ganha scrollbar automaticamente.
+        </p>
+        <p>
+          Exemplo: O Formulário Completo contém mais detalhes. O Formulário
+          Rápido é resumido...
+        </p>
+        <!-- etc... -->
+      </div>
+      <div class='modal-footer'>
+        <button type='button' class='btn btn-primary' data-bs-dismiss='modal'>
+          Fechar
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -1,15 +1,20 @@
-<div class='container d-flex justify-content-center align-items-center'>
-  <div class='card shadow-lg p-4' style='width: 100%; max-width: 800px;'>
-    <div class='card-body'>
-        <div>
-            <h1>Projeto de Gamificação</h1>
+{{!-- Exibir o breadcrumb --}}
+{{> breadcrumb items=breadcrumbs }}
+
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 800px;">
+    <div class="card-body">
+      <h1 class="mb-4 text-center">Formulário Completo</h1>
+
+      <form action="/forms/completeForm1" method="POST" class="gy-3">
+        {{> completeQuestions/general}}
+        {{> completeQuestions/gamification}}
+        {{> completeQuestions/narrative}}
+
+        <div class="mt-4 text-end">
+          <button type="submit" class="btn btn-primary">Enviar Formulário</button>
         </div>
-        <form action="/forms/completeForm1" method="POST">
-            {{> completeQuestions/general}}
-            {{> completeQuestions/gamification}}
-            {{> completeQuestions/narrative}}
-            <button type="submit" class='btn btn-primary'>Enviar Formulário</button> 
-        </form>
+      </form>
     </div>
   </div>
 </div>

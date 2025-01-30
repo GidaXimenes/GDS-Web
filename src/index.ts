@@ -16,6 +16,7 @@ app.engine(
     layoutsDir: `${__dirname}/views/layouts`,
     defaultLayout: 'main',
     partialsDir: `${__dirname}/views/partials`,
+    helpers: require(`${__dirname}/views/helpers/helpers.ts`),
   }),
 );
 app.set('view engine', 'handlebars');
@@ -30,6 +31,8 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false }));
+
+app.use(express.static(`${__dirname}/public`));
 
 app.use(router);
 app.listen(PORT, () => {

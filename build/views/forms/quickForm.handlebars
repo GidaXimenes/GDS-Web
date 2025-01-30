@@ -1,11 +1,24 @@
-<div class='container d-flex justify-content-center align-items-center'>
-  <div class='card shadow-lg p-4' style='width: 100%; max-width: 800px;'>
-    <div class='card-body'>
-        <form action="/forms/quickForm" method="POST">
-            {{> quickQuestions/quickQuestions1}}
-            {{> quickQuestions/quickQuestions2}}
-            <button type="submit" class='btn btn-primary'>Enviar Formulário</button>
-        </form>
+{{!-- Exibir o breadcrumb --}}
+{{> breadcrumb items=breadcrumbs }}
+
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 800px;">
+    <div class="card-body">
+      <h1 class="mb-4 text-center">Formulário Rápido</h1>
+
+      <!-- Form -->
+      <form action="/forms/quickForm" method="POST" class="gy-3">
+        <!-- Partial 1 -->
+        {{> quickQuestions/quickQuestions1}}
+        <!-- Partial 2 -->
+        {{> quickQuestions/quickQuestions2}}
+        <!-- Partial 3 -->
+        {{> quickQuestions/quickQuestions3}}
+
+        <div class="mt-4 text-end">
+          <button type="submit" class="btn btn-primary">Enviar Formulário</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

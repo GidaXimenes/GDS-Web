@@ -13,7 +13,6 @@ const completePrompt = async (
 ): Promise<string> => {
   try {
     const nivelEnsino = removeCustomOption(form1Data.nivelEnsino || 'N/A');
-    console.log('Dados do formulário 1:', nivelEnsino);
     const temasGenerosNarrativos = removeCustomOption(
       form1Data.temasGenerosNarrativos || 'N/A',
     );

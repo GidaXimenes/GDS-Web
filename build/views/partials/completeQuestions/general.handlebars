@@ -1,81 +1,139 @@
 {{! Sobre o Contexto Educacional e Participantes }}
 <div>
-  <h2>Sobre o Contexto Educacional e Participantes</h2>
+  <h2 class='mb-3'>Sobre o Contexto Educacional e Participantes</h2>
 
   {{! Qual o nível de ensino dos participantes? }}
   <div class='mb-3'>
-    <label>Qual o nível de ensino dos participantes?</label>
-    <div>
+    <label class='form-label fw-bold'>
+      Qual o nível de ensino dos participantes?
+    </label>
+
+    <div class='form-check'>
       <input
         type='radio'
         id='ensinoFundamental'
         name='nivelEnsino'
         value='Ensino Fundamental'
+        class='form-check-input'
       />
-      <label for='ensinoFundamental'>Ensino Fundamental</label>
+      <label for='ensinoFundamental' class='form-check-label'>
+        Ensino Fundamental
+      </label>
     </div>
-    <div>
+
+    <div class='form-check'>
       <input
         type='radio'
         id='ensinoMedio'
         name='nivelEnsino'
         value='Ensino Médio'
+        class='form-check-input'
       />
-      <label for='ensinoMedio'>Ensino Médio</label>
+      <label for='ensinoMedio' class='form-check-label'>
+        Ensino Médio
+      </label>
     </div>
-    <div>
+
+    <div class='form-check'>
       <input
         type='radio'
         id='ensinoSuperior'
         name='nivelEnsino'
         value='Ensino Superior'
+        class='form-check-input'
       />
-      <label for='ensinoSuperior'>Ensino Superior</label>
+      <label for='ensinoSuperior' class='form-check-label'>
+        Ensino Superior
+      </label>
     </div>
-    <div>
-      <input type='radio' id='outro' name='nivelEnsino' value='Outro' />
-      <label for='outro'>Outro:</label>
-      <input type='text' name='nivelEnsino' />
+
+    <div class='form-check'>
+      <input
+        type='radio'
+        id='outroEnsino'
+        name='nivelEnsino'
+        value='Outro'
+        class='form-check-input'
+        onchange="document.getElementById('ensinoOutroText').disabled = !this.checked"
+      />
+      <label for='outroEnsino' class='form-check-label'>Outro:</label>
+      <input
+        type='text'
+        id='ensinoOutroText'
+        name='nivelEnsino'
+        class='form-control mt-1'
+        placeholder='Descreva outro nível...'
+        style='max-width: 300px;'
+        disabled
+      />
     </div>
   </div>
 
   {{! Quantas pessoas participarão da atividade gamificada? }}
   <div class='mb-3'>
-    <label>Quantas pessoas participarão da atividade gamificada?</label>
-    <input type='number' name='quantidadePessoas' min='1' required />
+    <label class='form-label fw-bold'>
+      Quantas pessoas participarão da atividade gamificada?
+    </label>
+    <input
+      type='number'
+      name='quantidadePessoas'
+      min='1'
+      required
+      class='form-control'
+      style='max-width: 300px;'
+    />
   </div>
 
   {{! Qual o formato da aplicação? }}
   <div class='mb-3'>
-    <label>Qual o formato da aplicação?</label>
-    <div>
+    <label class='form-label fw-bold'>Qual o formato da aplicação?</label>
+
+    <div class='form-check'>
       <input
         type='radio'
         id='presencial'
         name='formatoAplicacao'
         value='Presencial'
+        class='form-check-input'
       />
-      <label for='presencial'>Presencial</label>
+      <label for='presencial' class='form-check-label'>Presencial</label>
     </div>
-    <div>
-      <input type='radio' id='online' name='formatoAplicacao' value='Online' />
-      <label for='online'>Online</label>
+
+    <div class='form-check'>
+      <input
+        type='radio'
+        id='online'
+        name='formatoAplicacao'
+        value='Online'
+        class='form-check-input'
+      />
+      <label for='online' class='form-check-label'>Online</label>
     </div>
-    <div>
+
+    <div class='form-check'>
       <input
         type='radio'
         id='hibrido'
         name='formatoAplicacao'
         value='Híbrido (presencial e online)'
+        class='form-check-input'
       />
-      <label for='hibrido'>Híbrido (presencial e online)</label>
+      <label for='hibrido' class='form-check-label'>
+        Híbrido (presencial e online)
+      </label>
     </div>
   </div>
 
   {{! Descreva o tema ou assunto }}
   <div class='mb-3'>
-    <label>Em poucas palavras, descreva o tema ou assunto que você deseja
-      gamificar.</label>
-    <textarea name='temaGamificacao' rows='3' required></textarea>
+    <label class='form-label fw-bold'>
+      Em poucas palavras, descreva o tema ou assunto que você deseja gamificar:
+    </label>
+    <textarea
+      name='temaGamificacao'
+      rows='3'
+      required
+      class='form-control'
+    ></textarea>
   </div>
 </div>

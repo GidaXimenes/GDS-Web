@@ -1,50 +1,143 @@
-<div class='container d-flex justify-content-center align-items-center'>
-  <div class='card shadow-lg p-4' style='width: 100%; max-width: 800px;'>
-    <div class='card-body'>
-      <h2 class='mb-4'>Narrativa e Instruções</h2>
+{{> breadcrumb items=breadcrumbs}}
 
-      <!-- Botões para alternar entre narrativa e instruções -->
-      <div class='mb-4'>
+<div class="container d-flex justify-content-center align-items-center">
+  <!-- Adicionando 'position-relative' no card 
+       pra ancorar o botão "Sobre" no canto superior direito -->
+  <div class="card position-relative shadow-lg p-4" style="width: 100%; max-width: 800px;">
+    <!-- Botão "Sobre" fixo no topo direito do card -->
+    <div style="position: absolute; top: 15px; right: 15px;">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#sobreModal"
+      >
+        Sobre
+      </button>
+    </div>
+
+    <div class="card-body">
+      <!-- Nav Tabs do Bootstrap -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <!-- Aba Narrativa -->
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="narrative-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#narrative-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="narrative-tab-pane"
+            aria-selected="true"
+          >
+            Narrativa
+          </button>
+        </li>
+        <!-- Aba Instruções -->
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="instructions-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#instructions-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="instructions-tab-pane"
+            aria-selected="false"
+          >
+            Instruções para criação do material
+          </button>
+        </li>
+      </ul>
+
+      <!-- Conteúdo das Tabs -->
+      <div class="tab-content mt-3" id="myTabContent">
+        <!-- Conteúdo Narrativa -->
+        <div
+          class="tab-pane fade show active"
+          id="narrative-tab-pane"
+          role="tabpanel"
+          aria-labelledby="narrative-tab"
+        >
+          <h3>Narrativa</h3>
+          <div>
+            {{{ narrative }}}
+          </div>
+        </div>
+
+        <!-- Conteúdo Instruções -->
+        <div
+          class="tab-pane fade"
+          id="instructions-tab-pane"
+          role="tabpanel"
+          aria-labelledby="instructions-tab"
+        >
+          <h3>Instruções</h3>
+          <div>
+            {{{ instructions }}}
+          </div>
+        </div>
+      </div>
+
+      <!-- Texto indicando que foi gerado por IA -->
+      <p class="mt-4 text-center text-muted">
+        Gerado por IA
+      </p>
+
+      <!-- Botões finais (pdf e voltar) -->
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="/download-pdf" class="btn btn-success" target="_blank">
+          Baixar PDF
+        </a>
         <button
-          class='btn btn-primary'
-          onclick="showContent('narrative')"
-        >Mostrar Narrativa</button>
-        <button
-          class='btn btn-secondary'
-          onclick="showContent('instructions')"
-        >Mostrar Instruções</button>
-      </div>
-
-      <!-- Div para exibir a narrativa -->
-      <div id='narrative' style='display: none;'>
-        <h3>Narrativa:</h3>
-        <div>{{{narrative}}}</div>
-      </div>
-
-      <!-- Div para exibir as instruções -->
-      <div id='instructions' style='display: none;'>
-        <h3>Instruções:</h3>
-        <div>{{{instructions}}}</div>
-      </div>
-
-      <!-- Botão para download do PDF -->
-      <div class='mt-4'>
-        <a href='/download-pdf' class='btn btn-success' target='_blank'>Baixar
-          PDF</a>
-      </div>
-
-      <!-- Botão para voltar ao início -->
-      <div class='mt-4'>
-        <button onclick="location.href='/'" class='btn btn-danger'>Voltar ao
-          Início</button>
+          class="btn btn-danger"
+          onclick="location.href='/'"
+        >
+          Voltar ao Início
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-  function showContent(section) {
-  document.getElementById('narrative').style.display = section === 'narrative' ?
-  'block' : 'none'; document.getElementById('instructions').style.display =
-  section === 'instructions' ? 'block' : 'none'; }
-</script>
+<!-- Modal do Bootstrap para "Sobre" -->
+<div
+  class="modal fade"
+  id="sobreModal"
+  tabindex="-1"
+  aria-labelledby="sobreModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sobreModalLabel">Sobre</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Fechar"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Coloque aqui o texto explicando como funciona essa parte,
+             similar ao "Sobre" da página inicial -->
+        <p>
+          Aqui você pode inserir as informações sobre como a narrativa
+          foi gerada, as diferenças entre as guias "Narrativa" e
+          "Instruções", etc.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,7 @@ app.engine('handlebars', (0, express_handlebars_1.engine)({
     layoutsDir: `${__dirname}/views/layouts`,
     defaultLayout: 'main',
     partialsDir: `${__dirname}/views/partials`,
+    helpers: require(`${__dirname}/views/helpers/helpers.ts`),
 }));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views`);
@@ -26,6 +27,7 @@ app.use((0, express_session_1.default)({
     saveUninitialized: true,
 }));
 app.use(express_1.default.urlencoded({ extended: false }));
+app.use(express_1.default.static(`${__dirname}/public`));
 app.use(router_1.default);
 app.listen(PORT, () => {
     console.log(`Express app iniciada na porta ${PORT}.`);

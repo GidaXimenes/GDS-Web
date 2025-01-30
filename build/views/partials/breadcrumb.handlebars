@@ -1,0 +1,17 @@
+<div class='breadcrumb-wrapper p-3 mb-3 mx-auto' style='max-width: 800px;'>
+  <nav aria-label='breadcrumb' class='m-0'>
+    <ol class='breadcrumb m-0'>
+      {{#each items}}
+        {{#if link}}
+          <li class='breadcrumb-item'>
+            <a href='{{link}}'>{{text}}</a>
+          </li>
+        {{else}}
+          <li class='breadcrumb-item active' aria-current='page'>
+            {{text}}
+          </li>
+        {{/if}}
+      {{/each}}
+    </ol>
+  </nav>
+</div>

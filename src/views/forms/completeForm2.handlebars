@@ -1,10 +1,42 @@
-<div class='container d-flex justify-content-center align-items-center'>
-  <div class='card shadow-lg p-4' style='width: 100%; max-width: 800px;'>
-    <div class='card-body'>
-        <form action="/forms/completeForm2" method="POST">
-            {{> completeQuestions/missions}}
-            <button type="submit" class='btn btn-primary'>Enviar Formulário</button>
-        </form>
+{{!-- Exibir o breadcrumb --}}
+{{> breadcrumb items=breadcrumbs }}
+
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 800px;">
+    <div class="card-body">
+      {{!-- Título, informando qual missão está preenchendo --}}
+      <h2 class="mb-3 text-center">
+        Missão {{currentMission}} de {{totalMissions}}
+      </h2>
+
+      {{!-- Se ainda faltam missões, exibir mensagem --}}
+      {{#if (gt remainingMissions 1)}}
+        <p class="text-center text-muted">
+          Após enviar esta, faltarão mais 
+          {{remainingMissions}} missões.
+        </p>
+      {{else if (eq remainingMissions 1)}}
+        <p class="text-center text-muted">
+          Após enviar esta, faltará apenas 
+          {{remainingMissions}} missão.
+        </p>
+      {{/if}}
+
+      <hr />
+
+      {{!-- Formulário --}}
+      <form action="/forms/completeForm2" method="POST">
+        {{!-- partial com as perguntas da missão --}}
+        {{> completeQuestions/missions}}
+
+        <div class="mt-4 text-end">
+          {{!-- Se for a última, pode trocar o texto do botão, 
+               mas aqui deixamos sempre "Enviar Formulário" --}}
+          <button type="submit" class="btn btn-primary">
+            Enviar e {{#if (gt remainingMissions 1)}}Próxima Missão{{else}}Finalizar{{/if}}
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

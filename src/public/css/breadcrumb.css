@@ -1,0 +1,18 @@
+.breadcrumb-wrapper {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb a {
+  color: royalblue;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Ajuste se quiser */
+.breadcrumb-item.active {
+  color: #777;
+}

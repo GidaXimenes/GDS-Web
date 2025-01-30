@@ -2,13 +2,10 @@ import { Request, Response } from 'express';
 import callGeminiAPI from '../services/geminiService';
 import prompts from '../prompts/prompt';
 import { marked } from 'marked';
-// Import normal do pdfmake
+// pdfmake
 import pdfMake from 'pdfmake/build/pdfmake';
-// Import do vfs_fonts como "qualquer coisa"
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-//console.log('pdfFonts ->', pdfFonts);
 
-// Basta usar a "default" diretamente como vfs
 (pdfMake as any).vfs = (pdfFonts as any).default;
 
 const index = (req: Request, res: Response) => {
@@ -22,62 +19,62 @@ const story_gen = async (req: Request, res: Response): Promise<void> => {
     if (!session.form1 && !session.quickForm) {
       res
         .status(400)
-        .send(
-          'Formulários incompletos. Por favor, preencha os formulários primeiro.',
-        );
-      return;
+        .send('Formulários incompletos. Preencha os formulários primeiro.');
     }
 
-    let prompt: string = '';
+    let prompt = '';
     let data: any;
 
     if (session.quickForm) {
-      // Caso o usuário tenha escolhido a versão rápida
       prompt = await prompts.quickPrompt(session.quickForm);
       data = session.quickForm;
     } else if (session.form1 && session.form2) {
-      // Caso o usuário tenha escolhido a versão completa
       prompt = await prompts.completePrompt(session.form1, session.form2);
       data = { form1: session.form1, form2: session.form2 };
     } else {
       res.status(400).send('Dados incompletos para gerar a narrativa.');
-      return;
     }
 
-    // Chame a API Gemini para gerar a narrativa
+    // Chama a API
     const narrativeMarkdown = await callGeminiAPI(prompt);
-
-    // Converta o Markdown para HTML
     const narrativeHTML = marked(narrativeMarkdown);
 
-    // Gere o prompt para as instruções do slide
+    // Gera instruções
     const slidePrompt = await prompts.slidePrompt(narrativeMarkdown);
-
-    // Chame a API Gemini novamente para gerar as instruções
     const slideInstructionsMarkdown = await callGeminiAPI(slidePrompt);
-
-    // Converta as instruções de Markdown para HTML
     const slideInstructionsHTML = marked(slideInstructionsMarkdown);
 
-    // Salve a narrativa e as instruções na sessão
-    session.narrative = narrativeMarkdown; // Salve em Markdown para o PDF
-    session.instructions = slideInstructionsMarkdown; // Salve em Markdown para o PDF
+    // Salva na sessão
+    session.narrative = narrativeMarkdown;
+    session.instructions = slideInstructionsMarkdown;
 
-    // Renderize o story.handlebars com a narrativa e as instruções
+    // Monta breadcrumb para story
+    const breadcrumbs = [
+      { text: 'Início', link: '/' },
+      { text: 'História Gerada' }, // ativo
+    ];
+
+    // Renderiza a view "story"
     res.render('main/story', {
       data,
       narrative: narrativeHTML,
       instructions: slideInstructionsHTML,
+      breadcrumbs,
     });
   } catch (error) {
-    console.error('Erro ao gerar a narrativa ou as instruções:', error);
-    res.status(500).send('Erro ao gerar a narrativa ou as instruções.');
+    console.error('Erro ao gerar a narrativa:', error);
+    res.status(500).send('Erro ao gerar a narrativa.');
   }
 };
 
 const form1 = async (req: Request, res: Response): Promise<void> => {
   if (req.method === 'GET') {
-    res.render('forms/completeForm1');
+    // BREADCRUMB p/ form1
+    const breadcrumbs = [
+      { text: 'Início', link: '/' },
+      { text: 'Formulário Completo' }, // ativo
+    ];
+    res.render('forms/completeForm1', { breadcrumbs });
   } else {
     try {
       const session = req.session as any;
@@ -94,20 +91,46 @@ const form1 = async (req: Request, res: Response): Promise<void> => {
 const form2 = async (req: Request, res: Response): Promise<void> => {
   if (req.method === 'GET') {
     const session = req.session as any;
+
     if (session.remainingMissions > 0) {
-      res.render('forms/completeForm2');
+      // BREADCRUMB p/ form2
+      const breadcrumbs = [
+        { text: 'Início', link: '/' },
+        { text: 'Formulário Completo', link: '/forms/completeForm1' },
+        { text: 'Missões' }, // ativo
+      ];
+
+      // Calcula total e missão atual
+      const totalMissions = parseInt(
+        session.form1?.quantidadeMissoes || '0',
+        10,
+      );
+      // Ex.: se o usuário pediu 3, no 1º GET de form2 => current= (3 -3 +1) =1
+      // no 2º => (3 -2 +1)=2 etc.
+      const currentMission = totalMissions - session.remainingMissions + 1;
+
+      // Renderiza com as variáveis
+      return res.render('forms/completeForm2', {
+        breadcrumbs,
+        totalMissions,
+        currentMission,
+        remainingMissions: session.remainingMissions,
+      });
     } else {
       res.status(400).send('Quantidade de missões inválida');
     }
   } else {
+    // POST => salva e decide se tem mais missões
     try {
       const session = req.session as any;
       session.form2Data.push(req.body);
       session.remainingMissions -= 1;
 
       if (session.remainingMissions > 0) {
+        // ainda tem missões => repete
         res.redirect('/forms/completeForm2');
       } else {
+        // terminou => story
         session.form2 = session.form2Data;
         res.redirect('/main/story');
       }
@@ -119,7 +142,15 @@ const form2 = async (req: Request, res: Response): Promise<void> => {
 
 const quickForm = async (req: Request, res: Response): Promise<void> => {
   if (req.method === 'GET') {
-    res.render('forms/quickForm');
+    // BREADCRUMB p/ quickForm
+    const breadcrumbs = [
+      { text: 'Início', link: '/' },
+      { text: 'Formulário Rápido' }, // ativo
+    ];
+    return res.render('forms/quickForm', {
+      breadcrumbs,
+      bodyClass: 'quickform-body',
+    });
   } else {
     try {
       const session = req.session as any;
@@ -134,58 +165,46 @@ const quickForm = async (req: Request, res: Response): Promise<void> => {
 const generatePDF = async (req: Request, res: Response): Promise<void> => {
   try {
     const session = req.session as any;
-
     if (!session.narrative || !session.instructions) {
       res.status(400).send('Dados para gerar o PDF estão incompletos.');
     }
-
     const { narrative, instructions } = session;
 
-    // Montamos o docDefinition sem nos preocuparmos com a tipagem exata:
     const docDefinition: any = {
       pageSize: 'A4',
       pageMargins: [40, 60, 40, 60],
       content: [
         { text: 'Minha Narrativa', style: 'header' },
-        {
-          text: narrative,
-          margin: [0, 10, 0, 10],
-        },
+        { text: narrative, margin: [0, 10, 0, 10] },
         { text: 'Minhas Instruções', style: 'subheader' },
-        {
-          text: instructions,
-        },
+        { text: instructions },
       ],
       styles: {
-        header: {
-          fontSize: 18,
-          bold: true,
-        },
-        subheader: {
-          fontSize: 14,
-          bold: true,
-        },
+        header: { fontSize: 18, bold: true },
+        subheader: { fontSize: 14, bold: true },
       },
     };
 
-    // Cria o PDF
     const pdfDocGenerator = (pdfMake as any).createPdf(docDefinition);
-
-    // Retorna em buffer
     pdfDocGenerator.getBuffer((buffer: Buffer) => {
-      // Define cabeçalhos
       res.writeHead(200, {
         'Content-Type': 'application/pdf',
         'Content-Disposition': 'attachment; filename="narrativa.pdf"',
         'Content-Length': buffer.length,
       });
-      // Envia binário
       res.end(buffer);
     });
   } catch (error) {
-    console.error('Erro ao gerar o PDF:', error);
-    res.status(500).send('Erro ao gerar o PDF.');
+    console.error('Erro ao gerar PDF:', error);
+    res.status(500).send('Erro ao gerar PDF.');
   }
 };
 
-export default { index, story_gen, form1, form2, quickForm, generatePDF };
+export default {
+  index,
+  story_gen,
+  form1,
+  form2,
+  quickForm,
+  generatePDF,
+};

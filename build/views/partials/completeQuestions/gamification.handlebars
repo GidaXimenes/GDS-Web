@@ -1,114 +1,176 @@
 {{! Sobre a Gamificação }}
 <div>
-  <h2>Sobre a Gamificação</h2>
+  <h2 class='mb-3'>Sobre a Gamificação</h2>
 
   {{! Quantas missões deseja realizar? }}
-  <div>
-    <label>Quantas missões deseja realizar nesta gamificação?</label>
-    <input type='number' name='quantidadeMissoes' min='1' required />
+  <div class='mb-3'>
+    <label class='form-label fw-bold'>
+      Quantas missões deseja realizar nesta gamificação?
+    </label>
+    <input
+      type='number'
+      name='quantidadeMissoes'
+      min='1'
+      required
+      class='form-control'
+    />
   </div>
 
   {{! De que forma os participantes interagirão na gamificação? }}
   <div class='mb-3'>
-    <label>De que forma os participantes interagirão na gamificação?</label>
-    <div>
+    <label class='form-label fw-bold'>De que forma os participantes interagirão
+      na gamificação?</label>
+
+    <div class='form-check'>
       <input
         type='radio'
         id='individual'
         name='interacao'
         value='Individualmente'
+        class='form-check-input'
       />
-      <label for='individual'>Individualmente</label>
+      <label for='individual' class='form-check-label'>Individualmente</label>
     </div>
-    <div>
+
+    <div class='form-check'>
       <input
         type='radio'
         id='grupos'
         name='interacao'
         value='Em grupos ou equipes'
+        class='form-check-input'
       />
-      <label for='grupos'>Em grupos ou equipes</label>
+      <label for='grupos' class='form-check-label'>Em grupos ou equipes</label>
     </div>
-    <div>
+
+    <div class='form-check'>
       <input
         type='radio'
         id='misto'
         name='interacao'
         value='Mistura de individual e coletivo'
+        class='form-check-input'
       />
-      <label for='misto'>Mistura de individual e coletivo</label>
+      <label for='misto' class='form-check-label'>
+        Mistura de individual e coletivo
+      </label>
     </div>
   </div>
 
   {{! Qual será o principal tipo de interação? }}
   <div class='mb-3'>
-    <label>Qual será o principal tipo de interação entre os participantes?</label>
-    <div>
+    <label class='form-label fw-bold'>Qual será o principal tipo de interação
+      entre os participantes?</label>
+    <div class='form-check'>
       <input
         type='radio'
         id='competicao'
         name='tipoInteracao'
         value='Competição'
+        class='form-check-input'
       />
-      <label for='competicao'>Competição</label>
+      <label for='competicao' class='form-check-label'>Competição</label>
     </div>
-    <div>
+    <div class='form-check'>
       <input
         type='radio'
         id='cooperacao'
         name='tipoInteracao'
         value='Cooperação'
+        class='form-check-input'
       />
-      <label for='cooperacao'>Cooperação</label>
+      <label for='cooperacao' class='form-check-label'>Cooperação</label>
     </div>
-    <div>
+    <div class='form-check'>
       <input
         type='radio'
         id='ambas'
         name='tipoInteracao'
         value='Ambas (competição e cooperação)'
+        class='form-check-input'
       />
-      <label for='ambas'>Ambas (competição e cooperação)</label>
+      <label for='ambas' class='form-check-label'>
+        Ambas (competição e cooperação)
+      </label>
     </div>
   </div>
 
   {{! Personalização na gamificação }}
   <div class='mb-3'>
-    <label>Como os participantes personalizarão sua experiência na gamificação?</label>
-    <div>
+    <label class='form-label fw-bold'>Como os participantes personalizarão sua
+      experiência na gamificação?</label>
+    <!-- Cada opção => checkbox -->
+    <div class='form-check'>
       <input
         type='checkbox'
+        class='form-check-input'
+        id='avatar'
         name='personalizacao'
         value='Escolha de avatares ou representações visuais'
       />
-      Escolha de avatares ou representações visuais<br />
+      <label class='form-check-label' for='avatar'>Escolha de avatares ou
+        representações visuais</label>
+    </div>
+
+    <div class='form-check'>
       <input
         type='checkbox'
+        class='form-check-input'
+        id='caminhosNarrativos'
         name='personalizacao'
         value='Escolha de caminhos narrativos (exploração aberta)'
       />
-      Escolha de caminhos narrativos (exploração aberta)<br />
+      <label class='form-check-label' for='caminhosNarrativos'>Escolha de
+        caminhos narrativos (exploração aberta)</label>
+    </div>
+
+    <div class='form-check'>
       <input
         type='checkbox'
+        class='form-check-input'
+        id='identidadeUnica'
         name='personalizacao'
         value='Criação de identidade única (ex.: apelido ou nome virtual)'
       />
-      Criação de identidade única (ex.: apelido ou nome virtual)<br />
+      <label class='form-check-label' for='identidadeUnica'>Criação de
+        identidade única (ex.: apelido ou nome virtual)</label>
+    </div>
+
+    <div class='form-check'>
       <input
         type='checkbox'
+        class='form-check-input'
+        id='recompensasBeneficios'
         name='personalizacao'
         value='Escolha de recompensas ou benefícios'
       />
-      Escolha de recompensas ou benefícios<br />
+      <label class='form-check-label' for='recompensasBeneficios'>Escolha de
+        recompensas ou benefícios</label>
+    </div>
+
+    <div class='form-check'>
       <input
         type='checkbox'
+        class='form-check-input'
+        id='configuracaoPreferencias'
         name='personalizacao'
         value='Configuração de preferências pessoais (ex.: acessibilidade, notificações)'
       />
-      Configuração de preferências pessoais (ex.: acessibilidade, notificações)<br
+      <label
+        class='form-check-label'
+        for='configuracaoPreferencias'
+      >Configuração de preferências pessoais (ex.: acessibilidade, notificações)</label>
+    </div>
+
+    <div class='form-check mt-2'>
+      <input
+        type='checkbox'
+        class='form-check-input'
+        id='nenhumaPerso'
+        name='personalizacao'
+        value='Nenhuma'
       />
-      <input type='checkbox' name='personalizacao' value='Nenhuma' />
-      Nenhuma personalização<br />
+      <label class='form-check-label' for='nenhumaPerso'>Nenhuma personalização</label>
     </div>
   </div>
 </div>

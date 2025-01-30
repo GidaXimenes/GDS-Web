@@ -1,80 +1,230 @@
 {{! Quais temas ou gêneros narrativos você gostaria de incorporar na gamificação? }}
 <div class='mb-3'>
-  <label>Quais temas ou gêneros narrativos você gostaria de incorporar na
-    gamificação? Aqui vão alguns exemplos:</label>
-  <div>
+  <label class='form-label fw-bold'>
+    Quais temas ou gêneros narrativos você gostaria de incorporar na
+    gamificação? Aqui vão alguns exemplos:
+  </label>
+
+  <!-- Aventura Espacial -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='aventuraEspacial'
       name='temasGenerosNarrativos'
       value='Aventura Espacial'
     />
-    Aventura espacial<br />
+    <label class='form-check-label' for='aventuraEspacial'>
+      Aventura espacial
+    </label>
+  </div>
+
+  <!-- Viagem No Tempo -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='viagemNoTempo'
       name='temasGenerosNarrativos'
       value='Viagem No Tempo'
     />
-    Viagem no tempo<br />
+    <label class='form-check-label' for='viagemNoTempo'>
+      Viagem no tempo
+    </label>
+  </div>
+
+  <!-- Mistério / Investigação / Suspense -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='misterioInvestigacao'
       name='temasGenerosNarrativos'
       value='Misterio ou Investigação ou Suspense'
     />
-    Mistério / Investigação / Suspense<br />
+    <label class='form-check-label' for='misterioInvestigacao'>
+      Mistério / Investigação / Suspense
+    </label>
+  </div>
+
+  <!-- Sobrevivência e exploração -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='sobrevivencia'
       name='temasGenerosNarrativos'
       value='Sobrevivencia'
     />
-    Sobrevivência e exploração<br />
+    <label class='form-check-label' for='sobrevivencia'>
+      Sobrevivência e exploração
+    </label>
+  </div>
+
+  <!-- Mitologia / Fantasia -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='mitologiaFantasia'
       name='temasGenerosNarrativos'
       value='Mitologia e Fantasia'
     />
-    Mitologia / Fantasia<br />
-    <input type='checkbox' name='temasGenerosNarrativos' value='Velho Oeste' />
-    Velho Oeste<br />
+    <label class='form-check-label' for='mitologiaFantasia'>
+      Mitologia / Fantasia
+    </label>
+  </div>
+
+  <!-- Velho Oeste -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='velhoOeste'
+      name='temasGenerosNarrativos'
+      value='Velho Oeste'
+    />
+    <label class='form-check-label' for='velhoOeste'>Velho Oeste</label>
+  </div>
+
+  <!-- Sustentabilidade e Proteção da Natureza -->
+  <div class='form-check'>
+    <input
+      type='checkbox'
+      class='form-check-input'
+      id='sustentabilidade'
       name='temasGenerosNarrativos'
       value='Sustentabilidade'
     />
-    Sustentabilidade e Proteção da Natureza<br />
+    <label class='form-check-label' for='sustentabilidade'>
+      Sustentabilidade e Proteção da Natureza
+    </label>
+  </div>
+
+  <!-- Mundo Utópico ou Distópico -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='utopiaDistopia'
       name='temasGenerosNarrativos'
       value='Utopia ou Distopia'
     />
-    Mundo Utópico ou Distópico<br />
-    <input type='checkbox' name='temasGenerosNarrativos' value='Piratas' />
-    Piratas<br />
+    <label class='form-check-label' for='utopiaDistopia'>
+      Mundo Utópico ou Distópico
+    </label>
+  </div>
+
+  <!-- Piratas -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='piratas'
+      name='temasGenerosNarrativos'
+      value='Piratas'
+    />
+    <label class='form-check-label' for='piratas'>Piratas</label>
+  </div>
+
+  <!-- Tempo Medieval -->
+  <div class='form-check'>
+    <input
+      type='checkbox'
+      class='form-check-input'
+      id='tempoMedieval'
       name='temasGenerosNarrativos'
       value='Tempo Medieval'
     />
-    Tempo Medieval<br />
+    <label class='form-check-label' for='tempoMedieval'>
+      Tempo Medieval
+    </label>
+  </div>
+
+  <!-- Cenários de Trabalho -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='cenariosTrabalho'
       name='temasGenerosNarrativos'
       value='Cenarios de Trabalho'
     />
-    Cenários de Trabalho<br />
-    <input type='checkbox' name='temasGenerosNarrativos' value='Terror' />
-    Terror<br />
-    <input type='checkbox' name='temasGenerosNarrativos' value='Drama' />
-    Drama<br />
-    <input type='checkbox' name='temasGenerosNarrativos' value='Comedia' />
-    Comédia<br />
+    <label class='form-check-label' for='cenariosTrabalho'>
+      Cenários de Trabalho
+    </label>
+  </div>
+
+  <!-- Terror -->
+  <div class='form-check'>
     <input
       type='checkbox'
+      class='form-check-input'
+      id='terror'
+      name='temasGenerosNarrativos'
+      value='Terror'
+    />
+    <label class='form-check-label' for='terror'>Terror</label>
+  </div>
+
+  <!-- Drama -->
+  <div class='form-check'>
+    <input
+      type='checkbox'
+      class='form-check-input'
+      id='drama'
+      name='temasGenerosNarrativos'
+      value='Drama'
+    />
+    <label class='form-check-label' for='drama'>Drama</label>
+  </div>
+
+  <!-- Comédia -->
+  <div class='form-check'>
+    <input
+      type='checkbox'
+      class='form-check-input'
+      id='comedia'
+      name='temasGenerosNarrativos'
+      value='Comedia'
+    />
+    <label class='form-check-label' for='comedia'>Comédia</label>
+  </div>
+
+  <!-- Ficção Científica -->
+  <div class='form-check'>
+    <input
+      type='checkbox'
+      class='form-check-input'
+      id='ficcaoCientifica'
       name='temasGenerosNarrativos'
       value='Ficcao Cientifica'
     />
-    Ficção Científica<br />
-    <input type='checkbox' name='temasGenerosNarrativos' value='Outro' />
-    Outro:
-    <input type='text' name='temasGenerosNarrativos' />
+    <label class='form-check-label' for='ficcaoCientifica'>
+      Ficção Científica
+    </label>
+  </div>
+
+  <!-- Outro: desabilitado até marcar checkbox -->
+  <div class='form-check'>
+    <input
+      type='checkbox'
+      class='form-check-input'
+      id='temasOutro'
+      name='temasGenerosNarrativos'
+      value='Outro'
+      onchange="document.getElementById('temasOutroText').disabled = !this.checked"
+    />
+    <label class='form-check-label' for='temasOutro'>Outro:</label>
+    <br />
+    <input
+      type='text'
+      id='temasOutroText'
+      name='temasGenerosNarrativos'
+      class='form-control mt-1'
+      placeholder='Descreva outro gênero narrativo...'
+      style='max-width: 500px;'
+      disabled
+    />
   </div>
 </div>
