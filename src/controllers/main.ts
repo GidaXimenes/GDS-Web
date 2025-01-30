@@ -189,7 +189,8 @@ const generatePDF = async (req: Request, res: Response): Promise<void> => {
     pdfDocGenerator.getBuffer((buffer: Buffer) => {
       res.writeHead(200, {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename="narrativa.pdf"',
+        'Content-Disposition':
+          'attachment; filename="narrativa gamificada.pdf"',
         'Content-Length': buffer.length,
       });
       res.end(buffer);
