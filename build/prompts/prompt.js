@@ -85,7 +85,7 @@ const quickPrompt = (quickFormData) => __awaiter(void 0, void 0, void 0, functio
     - Tipo de avaliação: ${tipoAvaliacao}
     - Obstáculos na missão: ${obstaculosMissao}
     `;
-        const basePrompt = yield promises_1.default.readFile(path_1.default.join(__dirname, 'completePrompt.txt'), 'utf-8');
+        const basePrompt = yield promises_1.default.readFile(path_1.default.join(__dirname, 'quickPrompt.txt'), 'utf-8');
         return `${prompt}\n${basePrompt.trim()}`;
     }
     catch (error) {
@@ -97,7 +97,7 @@ const slidePrompt = (narrative) => __awaiter(void 0, void 0, void 0, function* (
     try {
         let prompt = `Receba o seguinte texto de uma narrativa gamificada para uso educacional:
     \n${narrative}\n`;
-        const basePrompt = yield promises_1.default.readFile(path_1.default.join(__dirname, 'completePrompt.txt'), 'utf-8');
+        const basePrompt = yield promises_1.default.readFile(path_1.default.join(__dirname, 'slidePrompt.txt'), 'utf-8');
         return `${prompt}\n${basePrompt.trim()}`;
     }
     catch (error) {

@@ -51,6 +51,8 @@ const marked_1 = require("marked");
 // pdfmake
 const pdfmake_1 = __importDefault(require("pdfmake/build/pdfmake"));
 const pdfFonts = __importStar(require("pdfmake/build/vfs_fonts"));
+const html_to_pdfmake_1 = __importDefault(require("html-to-pdfmake"));
+const jsdom_1 = require("jsdom");
 pdfmake_1.default.vfs = pdfFonts.default;
 const index = (req, res) => {
     res.render('main/index');
@@ -208,25 +210,45 @@ const generatePDF = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             res.status(400).send('Dados para gerar o PDF estão incompletos.');
         }
         const { narrative, instructions } = session;
+        // Resolver o Markdown corretamente
+        const narrativeHTML = yield marked_1.marked.parse(narrative);
+        const instructionsHTML = yield marked_1.marked.parse(instructions);
+        // Criar um ambiente DOM simulado
+        const dom = new jsdom_1.JSDOM('<!DOCTYPE html><html><body></body></html>');
+        const window = dom.window;
+        // Converter HTML para pdfMake
+        const narrativePdfMake = (0, html_to_pdfmake_1.default)(narrativeHTML, { window });
+        const instructionsPdfMake = (0, html_to_pdfmake_1.default)(instructionsHTML, { window });
+        // Definição do PDF
         const docDefinition = {
             pageSize: 'A4',
             pageMargins: [40, 60, 40, 60],
             content: [
-                { text: 'Minha Narrativa', style: 'header' },
-                { text: narrative, margin: [0, 10, 0, 10] },
-                { text: 'Minhas Instruções', style: 'subheader' },
-                { text: instructions },
+                { text: 'Narrativa', style: 'header' },
+                narrativePdfMake,
+                {
+                    text: 'Instruções para criação do material',
+                    style: 'subheader',
+                    margin: [0, 20, 0, 10],
+                },
+                instructionsPdfMake,
             ],
             styles: {
-                header: { fontSize: 18, bold: true },
-                subheader: { fontSize: 14, bold: true },
+                header: {
+                    fontSize: 18,
+                    bold: true,
+                    alignment: 'center',
+                    margin: [0, 0, 0, 10],
+                },
+                subheader: { fontSize: 14, bold: true, margin: [0, 10, 0, 10] },
             },
         };
+        // Gerar e enviar o PDF
         const pdfDocGenerator = pdfmake_1.default.createPdf(docDefinition);
         pdfDocGenerator.getBuffer((buffer) => {
             res.writeHead(200, {
                 'Content-Type': 'application/pdf',
-                'Content-Disposition': 'attachment; filename="narrativa gamificada.pdf"',
+                'Content-Disposition': 'attachment; filename="narrativa_gamificada.pdf"',
                 'Content-Length': buffer.length,
             });
             res.end(buffer);
