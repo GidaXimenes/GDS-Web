@@ -5,6 +5,8 @@ import { marked } from 'marked';
 // pdfmake
 import pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import htmlToPdfMake from 'html-to-pdfmake';
+import { JSDOM } from 'jsdom';
 
 (pdfMake as any).vfs = (pdfFonts as any).default;
 
@@ -173,29 +175,53 @@ const generatePDF = async (req: Request, res: Response): Promise<void> => {
     if (!session.narrative || !session.instructions) {
       res.status(400).send('Dados para gerar o PDF estão incompletos.');
     }
+
     const { narrative, instructions } = session;
 
+    // Resolver o Markdown corretamente
+    const narrativeHTML = await marked.parse(narrative);
+    const instructionsHTML = await marked.parse(instructions);
+
+    // Criar um ambiente DOM simulado
+    const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
+    const window = dom.window;
+
+    // Converter HTML para pdfMake
+    const narrativePdfMake = htmlToPdfMake(narrativeHTML, { window });
+    const instructionsPdfMake = htmlToPdfMake(instructionsHTML, { window });
+
+    // Definição do PDF
     const docDefinition: any = {
       pageSize: 'A4',
       pageMargins: [40, 60, 40, 60],
       content: [
-        { text: 'Minha Narrativa', style: 'header' },
-        { text: narrative, margin: [0, 10, 0, 10] },
-        { text: 'Minhas Instruções', style: 'subheader' },
-        { text: instructions },
+        { text: 'Narrativa', style: 'header' },
+        narrativePdfMake,
+        {
+          text: 'Instruções para criação do material',
+          style: 'subheader',
+          margin: [0, 20, 0, 10],
+        },
+        instructionsPdfMake,
       ],
       styles: {
-        header: { fontSize: 18, bold: true },
-        subheader: { fontSize: 14, bold: true },
+        header: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'center',
+          margin: [0, 0, 0, 10],
+        },
+        subheader: { fontSize: 14, bold: true, margin: [0, 10, 0, 10] },
       },
     };
 
+    // Gerar e enviar o PDF
     const pdfDocGenerator = (pdfMake as any).createPdf(docDefinition);
     pdfDocGenerator.getBuffer((buffer: Buffer) => {
       res.writeHead(200, {
         'Content-Type': 'application/pdf',
         'Content-Disposition':
-          'attachment; filename="narrativa gamificada.pdf"',
+          'attachment; filename="narrativa_gamificada.pdf"',
         'Content-Length': buffer.length,
       });
       res.end(buffer);
@@ -205,7 +231,6 @@ const generatePDF = async (req: Request, res: Response): Promise<void> => {
     res.status(500).send('Erro ao gerar PDF.');
   }
 };
-
 export default {
   index,
   story_gen,

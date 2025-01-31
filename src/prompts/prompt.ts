@@ -111,7 +111,7 @@ const quickPrompt = async (quickFormData: any): Promise<string> => {
     - Obstáculos na missão: ${obstaculosMissao}
     `;
     const basePrompt = await fs.readFile(
-      path.join(__dirname, 'completePrompt.txt'),
+      path.join(__dirname, 'quickPrompt.txt'),
       'utf-8',
     );
     return `${prompt}\n${basePrompt.trim()}`;
@@ -127,7 +127,7 @@ const slidePrompt = async (narrative: any): Promise<string> => {
     \n${narrative}\n`;
 
     const basePrompt = await fs.readFile(
-      path.join(__dirname, 'completePrompt.txt'),
+      path.join(__dirname, 'slidePrompt.txt'),
       'utf-8',
     );
     return `${prompt}\n${basePrompt.trim()}`;
