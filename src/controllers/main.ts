@@ -52,7 +52,7 @@ const story_gen = async (req: Request, res: Response): Promise<void> => {
 
     // Monta breadcrumb para story
     const breadcrumbs = [
-      { text: 'Início', link: '/' },
+      { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
       { text: 'História Gerada' }, // ativo
     ];
 
@@ -78,7 +78,7 @@ const form1 = async (req: Request, res: Response): Promise<void> => {
   if (req.method === 'GET') {
     // BREADCRUMB p/ form1
     const breadcrumbs = [
-      { text: 'Início', link: '/' },
+      { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
       { text: 'Formulário Completo' }, // ativo
     ];
     res.render('forms/completeForm1', { breadcrumbs });
@@ -102,7 +102,7 @@ const form2 = async (req: Request, res: Response): Promise<void> => {
     if (session.remainingMissions > 0) {
       // BREADCRUMB p/ form2
       const breadcrumbs = [
-        { text: 'Início', link: '/' },
+        { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
         { text: 'Formulário Completo', link: '/forms/completeForm1' },
         { text: 'Missões' }, // ativo
       ];
@@ -151,7 +151,7 @@ const quickForm = async (req: Request, res: Response): Promise<void> => {
   if (req.method === 'GET') {
     // BREADCRUMB p/ quickForm
     const breadcrumbs = [
-      { text: 'Início', link: '/' },
+      { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
       { text: 'Formulário Rápido' }, // ativo
     ];
     return res.render('forms/quickForm', {

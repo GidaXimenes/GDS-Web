@@ -11,12 +11,22 @@
     <link rel='stylesheet' href='/css/index.css' />
     <link rel='stylesheet' href='/css/breadcrumb.css' />
     <link rel='stylesheet' href='/css/style.css' />
-
   </head>
+  
   <body class="{{#if bodyClass}}{{bodyClass}}{{else}}bg-default{{/if}}">
+    <!-- Botão com a logo no canto superior esquerdo -->
+    <div class="position-absolute top-0 start-0 m-3">
+      <a href="https://jrsbernardo.wixstudio.com/gdsweb">
+        <img src="/img/logo.png" alt="Logo GDS" width="200" height="auto" class="img-fluid rounded-3">
+      </a>
+    </div>
+
+    <!-- Conteúdo principal -->
     <div class='container mt-4'>
       {{{body}}}
     </div>
+
+    <!-- Bootstrap JS -->
     <script
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
       crossorigin='anonymous'

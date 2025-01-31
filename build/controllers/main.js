@@ -90,7 +90,7 @@ const story_gen = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         session.instructions = slideInstructionsMarkdown;
         // Monta breadcrumb para story
         const breadcrumbs = [
-            { text: 'Início', link: '/' },
+            { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
             { text: 'História Gerada' }, // ativo
         ];
         // Renderiza a view "story"
@@ -113,7 +113,7 @@ const form1 = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.method === 'GET') {
         // BREADCRUMB p/ form1
         const breadcrumbs = [
-            { text: 'Início', link: '/' },
+            { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
             { text: 'Formulário Completo' }, // ativo
         ];
         res.render('forms/completeForm1', { breadcrumbs });
@@ -138,7 +138,7 @@ const form2 = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (session.remainingMissions > 0) {
             // BREADCRUMB p/ form2
             const breadcrumbs = [
-                { text: 'Início', link: '/' },
+                { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
                 { text: 'Formulário Completo', link: '/forms/completeForm1' },
                 { text: 'Missões' }, // ativo
             ];
@@ -184,7 +184,7 @@ const quickForm = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.method === 'GET') {
         // BREADCRUMB p/ quickForm
         const breadcrumbs = [
-            { text: 'Início', link: '/' },
+            { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
             { text: 'Formulário Rápido' }, // ativo
         ];
         return res.render('forms/quickForm', {
