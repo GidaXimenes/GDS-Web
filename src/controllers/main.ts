@@ -65,11 +65,10 @@ const story_gen = async (req: Request, res: Response): Promise<void> => {
     });
   } catch (error) {
     console.error('Erro ao gerar a narrativa:', error);
-    res.status(500).send('Erro ao gerar a narrativa.');
     res
-      .status(503)
+      .status(500)
       .send(
-        'O modelo do Gemini está sobrecarregado =(, tente novamante em alguns instantes',
+        'Erro ao gerar a narrativa. O modelo do Gemini está sobrecarregado =(, tente novamante em alguns instantes',
       );
   }
 };
@@ -174,6 +173,7 @@ const generatePDF = async (req: Request, res: Response): Promise<void> => {
     const session = req.session as any;
     if (!session.narrative || !session.instructions) {
       res.status(400).send('Dados para gerar o PDF estão incompletos.');
+      return;
     }
 
     const { narrative, instructions } = session;
@@ -228,9 +228,13 @@ const generatePDF = async (req: Request, res: Response): Promise<void> => {
     });
   } catch (error) {
     console.error('Erro ao gerar PDF:', error);
-    res.status(500).send('Erro ao gerar PDF.');
+    // É importante garantir que o catch não tente enviar outra resposta se já tiver sido enviada
+    if (!res.headersSent) {
+      res.status(500).send('Erro ao gerar PDF.');
+    }
   }
 };
+
 export default {
   index,
   story_gen,
