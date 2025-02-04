@@ -205,6 +205,7 @@ const quickForm = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 const generatePDF = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const session = req.session;
+        console.log('Sessão antes da geração do PDF:', session);
         if (!session.narrative || !session.instructions) {
             res.status(400).send('Dados para gerar o PDF estão incompletos.');
             return;
