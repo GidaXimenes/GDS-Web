@@ -56,12 +56,14 @@ const story_gen = async (req: Request, res: Response): Promise<void> => {
       { text: 'História Gerada' }, // ativo
     ];
 
-    // Renderiza a view "story"
-    res.render('main/story', {
-      data,
-      narrative: narrativeHTML,
-      instructions: slideInstructionsHTML,
-      breadcrumbs,
+    req.session.save((err) => {
+      if (err) console.error('Erro ao salvar sessão:', err);
+      res.render('main/story', {
+        data,
+        narrative: narrativeHTML,
+        instructions: slideInstructionsHTML,
+        breadcrumbs,
+      });
     });
   } catch (error) {
     console.error('Erro ao gerar a narrativa:', error);
@@ -87,7 +89,10 @@ const form1 = async (req: Request, res: Response): Promise<void> => {
       session.form1 = req.body;
       session.form2Data = [];
       session.remainingMissions = parseInt(req.body.quantidadeMissoes, 10);
-      res.redirect('/forms/completeForm2');
+      req.session.save((err) => {
+        if (err) console.error('Erro ao salvar sessão:', err);
+        res.redirect('/forms/completeForm2');
+      });
     } catch (err) {
       res.status(500).send(err);
     }
@@ -132,14 +137,16 @@ const form2 = async (req: Request, res: Response): Promise<void> => {
       session.form2Data.push(req.body);
       session.remainingMissions -= 1;
 
-      if (session.remainingMissions > 0) {
-        // ainda tem missões => repete
-        res.redirect('/forms/completeForm2');
-      } else {
-        // terminou => story
-        session.form2 = session.form2Data;
-        res.redirect('/main/story');
-      }
+      req.session.save((err) => {
+        if (err) console.error('Erro ao salvar sessão:', err);
+
+        if (session.remainingMissions > 0) {
+          res.redirect('/forms/completeForm2');
+        } else {
+          session.form2 = session.form2Data;
+          res.redirect('/main/story');
+        }
+      });
     } catch (err) {
       res.status(500).send(err);
     }
@@ -171,7 +178,7 @@ const quickForm = async (req: Request, res: Response): Promise<void> => {
 const generatePDF = async (req: Request, res: Response): Promise<void> => {
   try {
     const session = req.session as any;
-    console.log('Sessão antes da geração do PDF:', session);
+    //console.log('Sessão antes da geração do PDF:', session);
 
     if (!session.narrative || !session.instructions) {
       res.status(400).send('Dados para gerar o PDF estão incompletos.');

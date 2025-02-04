@@ -93,12 +93,15 @@ const story_gen = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             { text: 'Início', link: 'https://jrsbernardo.wixstudio.com/gdsweb' },
             { text: 'História Gerada' }, // ativo
         ];
-        // Renderiza a view "story"
-        res.render('main/story', {
-            data,
-            narrative: narrativeHTML,
-            instructions: slideInstructionsHTML,
-            breadcrumbs,
+        req.session.save((err) => {
+            if (err)
+                console.error('Erro ao salvar sessão:', err);
+            res.render('main/story', {
+                data,
+                narrative: narrativeHTML,
+                instructions: slideInstructionsHTML,
+                breadcrumbs,
+            });
         });
     }
     catch (error) {
@@ -123,7 +126,11 @@ const form1 = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             session.form1 = req.body;
             session.form2Data = [];
             session.remainingMissions = parseInt(req.body.quantidadeMissoes, 10);
-            res.redirect('/forms/completeForm2');
+            req.session.save((err) => {
+                if (err)
+                    console.error('Erro ao salvar sessão:', err);
+                res.redirect('/forms/completeForm2');
+            });
         }
         catch (err) {
             res.status(500).send(err);
@@ -164,15 +171,17 @@ const form2 = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             const session = req.session;
             session.form2Data.push(req.body);
             session.remainingMissions -= 1;
-            if (session.remainingMissions > 0) {
-                // ainda tem missões => repete
-                res.redirect('/forms/completeForm2');
-            }
-            else {
-                // terminou => story
-                session.form2 = session.form2Data;
-                res.redirect('/main/story');
-            }
+            req.session.save((err) => {
+                if (err)
+                    console.error('Erro ao salvar sessão:', err);
+                if (session.remainingMissions > 0) {
+                    res.redirect('/forms/completeForm2');
+                }
+                else {
+                    session.form2 = session.form2Data;
+                    res.redirect('/main/story');
+                }
+            });
         }
         catch (err) {
             res.status(500).send(err);
@@ -205,7 +214,7 @@ const quickForm = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 const generatePDF = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const session = req.session;
-        console.log('Sessão antes da geração do PDF:', session);
+        //console.log('Sessão antes da geração do PDF:', session);
         if (!session.narrative || !session.instructions) {
             res.status(400).send('Dados para gerar o PDF estão incompletos.');
             return;
