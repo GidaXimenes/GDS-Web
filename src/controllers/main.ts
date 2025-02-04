@@ -171,6 +171,8 @@ const quickForm = async (req: Request, res: Response): Promise<void> => {
 const generatePDF = async (req: Request, res: Response): Promise<void> => {
   try {
     const session = req.session as any;
+    console.log('Sessão antes da geração do PDF:', session);
+
     if (!session.narrative || !session.instructions) {
       res.status(400).send('Dados para gerar o PDF estão incompletos.');
       return;

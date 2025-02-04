@@ -24,9 +24,10 @@ app.set('views', `${__dirname}/views`);
 
 app.use(
   session({
-    secret: 'iD#ndGinmNasl@e', // Substitua por uma chave segura
-    resave: true,
+    secret: 'iD#ndGinmNasl@e',
+    resave: false,
     saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 }, // Sessão dura 1 hora
   }),
 );
 

@@ -22,9 +22,10 @@ app.engine('handlebars', (0, express_handlebars_1.engine)({
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views`);
 app.use((0, express_session_1.default)({
-    secret: 'iD#ndGinmNasl@e', // Substitua por uma chave segura
-    resave: true,
+    secret: 'iD#ndGinmNasl@e',
+    resave: false,
     saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 }, // Sessão dura 1 hora
 }));
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.static(`${__dirname}/public`));
