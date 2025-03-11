@@ -15,17 +15,20 @@
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
+    "connect-redis": "^8.0.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-handlebars": "^8.0.1",
     "express-session": "^1.18.1",
     "handlebars-layouts": "^3.1.4",
     "html-to-pdfmake": "^2.5.20",
+    "ioredis": "^5.5.0",
     "jsdom": "^26.0.0",
     "marked": "^15.0.6",
     "morgan": "^1.10.0",
     "pdf-lib": "^1.17.1",
-    "pdfmake": "^0.2.18"
+    "pdfmake": "^0.2.18",
+    "redis": "^4.7.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
