@@ -22,7 +22,7 @@ A aplicação guia o usuário através de um fluxo simples para coletar os requi
 
 3.  **Geração com IA**:
     * Os dados dos formulários são compilados em um *prompt* detalhado.
-    * Este prompt é enviado ao serviço **Google Generative AI (Gemini)** para gerar a narrativa principal da aula gamificada.
+    * Este prompt é enviado ao **Google Gemini** para gerar a narrativa principal da aula gamificada.
     * A narrativa gerada é então usada para criar um *segundo prompt*, instruindo a IA a gerar diretrizes de slides e alternativas de aplicação (como leitura dramatizada).
 
 4.  **Exibição dos Resultados**: A aplicação exibe os resultados em uma interface com duas abas:
